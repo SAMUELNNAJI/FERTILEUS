@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us – FertilEus Network</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-13 5l-1.21-1.21A9.93 9.93 0 0 1 17 8z"
+              />
+            </svg>
+          </span>
+          <span class="logo-text">FertilEus</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="egg-donation.html">Egg Donation</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-green nav-cta">Get Support</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== MOBILE NAV OVERLAY ===== -->
+    <div class="mob-nav" id="mobNav" aria-hidden="true">
+      <button class="mob-nav-close" id="mobNavClose" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+      <ul class="mob-nav-links">
+        <li>
+          <a href="index.html">Home<span class="mob-num">01</span></a>
+        </li>
+        <li>
+          <a href="about.html">About<span class="mob-num">02</span></a>
+        </li>
+        <li>
+          <a href="egg-donation.html"
+            >Egg Donation<span class="mob-num">03</span></a
+          >
+        </li>
+        <li>
+          <a href="calculator.html"
+            >Calculator<span class="mob-num">04</span></a
+          >
+        </li>
+        <li>
+          <a href="blog.html">Blog<span class="mob-num">05</span></a>
+        </li>
+        <li>
+          <a href="contact.html">Contact<span class="mob-num">06</span></a>
+        </li>
+      </ul>
+      <a href="contact.html" class="btn mob-support-btn">Get Support</a>
+      <p class="mob-nav-tagline">
+        Fertility care, guidance &amp; community across Africa
+      </p>
+    </div>
+
+    <!-- ===== ABOUT HERO ===== -->
+    <section class="ab-hero">
+      <div class="ab-hero-inner">
+        <p class="section-tag">About Us</p>
+        <h1 class="ab-hero-heading">
+          Africa's first <em>fertility<br />ecosystem</em>
+        </h1>
+        <p class="ab-hero-sub">
+          Since 2023 we have worked to change how the continent talks about
+          fertility — breaking stigma, spreading knowledge and connecting
+          families to care they can trust.
+        </p>
+        <div class="ab-hero-buttons">
+          <a href="contact.html" class="btn btn-green">Contact us</a>
+          <a href="egg-donation.html" class="btn btn-outline-dark"
+            >Egg donation</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY WE STARTED ===== -->
+    <section class="ab-why" id="our-story">
+      <div class="ab-why-container">
+        <div class="ab-why-image">
+          <img src="assests/image/about.jpg" alt="About us – why we started" />
+        </div>
+
+        <div class="ab-why-content">
+          <p class="section-tag">Our Story</p>
+          <h2 class="section-heading">Why we started</h2>
+          <p class="section-body">
+            We kept meeting far too many people facing fertility challenges
+            alone — without access to the best specialists, reliable medical
+            information and nobody willing to ask. We built FertilEus so that no
+            one has to face this in the dark.
+          </p>
+          <p class="section-body">
+            Today we reach across 15 African countries with more than 50
+            certified clinics, and a community of over 10,000 families who found
+            answers here first.
+          </p>
+          <div class="ab-stats">
+            <div class="stat">
+              <span class="stat-number">10,000+</span>
+              <span class="stat-label">Families</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Clinics</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">12+</span>
+              <span class="stat-label">Countries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT WE STAND FOR ===== -->
+    <section class="ab-values" id="values">
+      <div class="ab-values-container">
+        <p class="section-tag">Our Mission</p>
+        <h2 class="ab-values-heading">What we stand for</h2>
+        <p class="ab-values-sub">
+          To raise fertility awareness, reduce stigma, and connect people to
+          trusted clinics, donors and surrogacy programmes — with education and
+          support at every step.
+        </p>
+        <div class="ab-values-grid">
+          <div class="ab-value-card">
+            <div class="ab-value-icon"><i class="fa-regular fa-heart"></i></div>
+            <h3>Compassion</h3>
+            <p>
+              Every fertility journey is met with empathy, dignity and deep
+              respect.
+            </p>
+          </div>
+          <div class="ab-value-card">
+            <div class="ab-value-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Trust</h3>
+            <p>
+              We only connect you to verified, reputable clinics and
+              specialists.
+            </p>
+          </div>
+          <div class="ab-value-card">
+            <div class="ab-value-icon">
+              <i class="fa-regular fa-bookmark"></i>
+            </div>
+            <h3>Education</h3>
+            <p>
+              We make complex fertility science understandable and actionable.
+            </p>
+          </div>
+          <div class="ab-value-card">
+            <div class="ab-value-icon">
+              <i class="fa-solid fa-earth-africa"></i>
+            </div>
+            <h3>Pan-African</h3>
+            <p>
+              Built for the realities of families across the whole continent.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW WE GREW (TIMELINE) ===== -->
+    <section class="ab-timeline">
+      <div class="ab-timeline-container">
+        <p class="section-tag">Our History</p>
+        <h2 class="section-heading">How we grew</h2>
+        <div class="ab-timeline-list">
+          <div class="ab-timeline-item">
+            <div class="ab-timeline-dot"></div>
+            <div class="ab-timeline-content">
+              <span class="ab-timeline-year">2023</span>
+              <h3>The network begins</h3>
+              <p>
+                FertilEus launched as an online hub for Africans talking openly
+                about fertility.
+              </p>
+            </div>
+          </div>
+
+          <div class="ab-timeline-item">
+            <div class="ab-timeline-dot"></div>
+            <div class="ab-timeline-content">
+              <span class="ab-timeline-year">2024</span>
+              <h3>Clinic verification</h3>
+              <p>First 30 partner clinics audited and onboarded.</p>
+            </div>
+          </div>
+
+          <div class="ab-timeline-item">
+            <div class="ab-timeline-dot"></div>
+            <div class="ab-timeline-content">
+              <span class="ab-timeline-year">2025</span>
+              <h3>Donor programme</h3>
+              <p>
+                Africa's first community-led donor matching service launched.
+              </p>
+            </div>
+          </div>
+
+          <div class="ab-timeline-item">
+            <div class="ab-timeline-dot"></div>
+            <div class="ab-timeline-content">
+              <span class="ab-timeline-year">2026</span>
+              <h3>Dr. Adakings</h3>
+              <p>24/7 AI fertility guide connected to everyone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <p class="footer-brand-name">FertilEus Network</p>
+          <p class="footer-brand-desc">
+            A community-driven fertility ecosystem built for Africa — education,
+            verified clinics, donor matching and surrogacy guidance, all in one
+            place.
+          </p>
+          <div class="footer-contact">
+            <p><i class="fa-regular fa-envelope"></i> info@fertileus.org</p>
+            <p><i class="fa-solid fa-phone"></i> +234 800 FERTILE</p>
+            <p>
+              <i class="fa-regular fa-circle-dot"></i> Lagos, Nigeria —
+              Pan-African
+            </p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="egg-donation.html">Egg donation</a></li>
+            <li><a href="calculator.html">Ovulation calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="blog.html">Fertility journal</a></li>
+            <li><a href="#">Chat with Dr. Adakings</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FertilEus Network. All rights reserved.</p>
+        <p class="footer-disclaimer">
+          Information here is educational and never a substitute for medical
+          advice.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
