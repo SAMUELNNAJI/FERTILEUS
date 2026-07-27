@@ -1,5 +1,7 @@
 {% extends "home/base.html" %} {% load static %} {% block title %}FertilEus –
-Your Fertile Health Matters to Us{% endblock %} {% block meta_description %}Trusted fertility education, personalised guidance, and community support for people across Africa.{% endblock %} {% block content %}
+Your Fertile Health Matters to Us{% endblock %} {% block meta_description
+%}Trusted fertility education, personalised guidance, and community support for
+people across Africa.{% endblock %} {% block content %}
 
 <!-- ===== HERO SECTION ===== -->
 <section class="hero">
@@ -239,7 +241,8 @@ Your Fertile Health Matters to Us{% endblock %} {% block meta_description %}Trus
           </div>
           <div class="journal-body">
             <p class="journal-meta">
-              <span class="journal-cat">{{ post.blog_category }}</span> · {{ post.blog_date|date:"j F Y" }}
+              <span class="journal-cat">{{ post.blog_category }}</span> · {{
+              post.blog_date|date:"j F Y" }}
             </p>
             <h3>{{ post.blog_title }}</h3>
             <p>{{ post.blog_content|truncatewords:20 }}</p>
