@@ -1,0 +1,175 @@
+{% extends "home/base.html" %} {% load static %} {% block title %}Journal –
+FertilEus Network{% endblock %} {% block meta_description %}Explore expert fertility insights, pregnancy information, and egg donation guidance from FertilEus.{% endblock %} {% block content %}
+
+<!-- ===== BLOG HERO ===== -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <span class="blog-pill-tag">Journal</span>
+    <h1 class="blog-hero-heading">Fertility <em>insights</em></h1>
+    <p class="blog-hero-sub">
+      Clear, compassionate answers to the questions people are often afraid to
+      ask out loud.
+    </p>
+  </div>
+</section>
+
+<!-- ===== BLOG GRID ===== -->
+<section class="blog-section">
+  <div class="blog-container">
+    <!-- Category filter pills -->
+    <div
+      class="blog-filters"
+      role="group"
+      aria-label="Filter articles by category"
+    >
+      <button
+        class="blog-filter-btn {% if active_category == 'all' %}active{% endif %}"
+        data-filter="all"
+      >
+        All
+      </button>
+      <button
+        class="blog-filter-btn {% if active_category == 'Fertility' %}active{% endif %}"
+        data-filter="Fertility"
+      >
+        Fertility
+      </button>
+      <button
+        class="blog-filter-btn {% if active_category == 'Pregnancy' %}active{% endif %}"
+        data-filter="Pregnancy"
+      >
+        Pregnancy
+      </button>
+      <button
+        class="blog-filter-btn {% if active_category == 'Donation' %}active{% endif %}"
+        data-filter="Donation"
+      >
+        Donation
+      </button>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="blog-grid" id="blogGrid">
+      {% for post in posts %}
+      <article class="journal-card" data-category="{{ post.blog_category }}">
+        <div class="journal-img-wrap">
+          {% if post.blog_image %}
+          <img
+            src="{{ post.blog_image.url }}"
+            alt="{{ post.blog_title }}"
+            class="journal-img"
+          />
+          {% else %}
+          <img
+            src="{% static 'assests/image/Fertility.jpg' %}"
+            alt="{{ post.blog_title }}"
+            class="journal-img"
+          />
+          {% endif %}
+        </div>
+        <div class="journal-body">
+          <p class="journal-meta">
+            <span class="journal-cat">{{ post.blog_category }}</span>
+            · {{ post.blog_date|date:"j F Y" }} · {{ post.blog_read_time }} min
+            read
+          </p>
+          <h3>{{ post.blog_title }}</h3>
+          <p>{{ post.blog_content|truncatewords:28 }}</p>
+          <a href="{% url 'blog_post' post.blog_slug %}" class="journal-link"
+            >Read article</a
+          >
+        </div>
+      </article>
+      {% empty %}
+      <!-- No posts in DB yet — show placeholder cards so the page looks complete -->
+      <article class="journal-card" data-category="Fertility">
+        <div class="journal-img-wrap">
+          <img
+            src="{% static 'assests/image/Fertility.jpg' %}"
+            alt="Understanding Your Fertile Window"
+            class="journal-img"
+          />
+        </div>
+        <div class="journal-body">
+          <p class="journal-meta">
+            <span class="journal-cat">Fertility</span> · 29 March 2026 · 6 min
+            read
+          </p>
+          <h3>Understanding Your Fertile Window</h3>
+          <p>
+            Six days a cycle really matter. Here is how to find yours using
+            cycle length, cervical mucus and simple tracking — no expensive
+            gadgets required.
+          </p>
+        </div>
+      </article>
+      <article class="journal-card" data-category="Pregnancy">
+        <div class="journal-img-wrap">
+          <img
+            src="{% static 'assests/image/pregnacy.jpg' %}"
+            alt="When Conception Takes Longer Than Expected"
+            class="journal-img"
+          />
+        </div>
+        <div class="journal-body">
+          <p class="journal-meta">
+            <span class="journal-cat">Pregnancy</span> · 28 March 2026 · 7 min
+            read
+          </p>
+          <h3>When Conception Takes Longer Than Expected</h3>
+          <p>
+            Trying for months without a positive test is exhausting. Here is
+            what is actually happening, what is normal, and the point at which
+            testing becomes worthwhile.
+          </p>
+        </div>
+      </article>
+      <article class="journal-card" data-category="Donation">
+        <div class="journal-img-wrap">
+          <img
+            src="{% static 'assests/image/donations.jpg' %}"
+            alt="What Egg Donation Really Involves"
+            class="journal-img"
+          />
+        </div>
+        <div class="journal-body">
+          <p class="journal-meta">
+            <span class="journal-cat">Donation</span> · 26 March 2026 · 5 min
+            read
+          </p>
+          <h3>What Egg Donation Really Involves</h3>
+          <p>
+            From screening to retrieval, a clear and honest walkthrough of the
+            egg donation process — including the questions donors are often too
+            shy to ask.
+          </p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block extra_js %}
+<script>
+  const filterBtns = document.querySelectorAll(".blog-filter-btn");
+  const cards = document.querySelectorAll("#blogGrid .journal-card");
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.dataset.filter;
+      cards.forEach((card) => {
+        if (filter === "all" || card.dataset.category === filter) {
+          card.classList.remove("hidden-card");
+          card.style.animation = "none";
+          card.offsetHeight;
+          card.style.animation = "fadeUp 0.4s ease both";
+        } else {
+          card.classList.add("hidden-card");
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}

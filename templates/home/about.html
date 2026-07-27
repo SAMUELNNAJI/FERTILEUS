@@ -1,0 +1,154 @@
+{% extends "home/base.html" %} {% load static %} {% block title %}About Us –
+FertilEus Network{% endblock %} {% block meta_description %}Learn how FertilEus supports fertility education, informed choices, and compassionate care across Africa.{% endblock %} {% block content %}
+
+<!-- ===== ABOUT HERO ===== -->
+<section class="ab-hero">
+  <div class="ab-hero-inner">
+    <p class="section-tag">About Us</p>
+    <h1 class="ab-hero-heading">
+      Africa's first <em>fertility<br />ecosystem</em>
+    </h1>
+    <p class="ab-hero-sub">
+      Since 2023 we have worked to change how the continent talks about
+      fertility — breaking stigma, spreading knowledge and connecting families
+      to care they can trust.
+    </p>
+    <div class="ab-hero-buttons">
+      <a href="{% url 'contact' %}" class="btn btn-green">Contact us</a>
+      <a href="{% url 'egg_donation' %}" class="btn btn-outline-dark"
+        >Egg donation</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY WE STARTED ===== -->
+<section class="ab-why" id="our-story">
+  <div class="ab-why-container">
+    <div class="ab-why-image">
+      <img
+        src="{% static 'assests/image/about.jpg' %}"
+        alt="About us – why we started"
+      />
+    </div>
+    <div class="ab-why-content">
+      <p class="section-tag">Our Story</p>
+      <h2 class="section-heading">Why we started</h2>
+      <p class="section-body">
+        We kept meeting far too many people facing fertility challenges alone —
+        without access to the best specialists, reliable medical information and
+        nobody willing to ask. We built FertilEus so that no one has to face
+        this in the dark.
+      </p>
+      <p class="section-body">
+        Today we reach across 15 African countries with more than 50 certified
+        clinics, and a community of over 10,000 families who found answers here
+        first.
+      </p>
+      <div class="ab-stats">
+        <div class="stat">
+          <span class="stat-number">10,000+</span>
+          <span class="stat-label">Families</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Clinics</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">12+</span>
+          <span class="stat-label">Countries</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT WE STAND FOR ===== -->
+<section class="ab-values" id="values">
+  <div class="ab-values-container">
+    <p class="section-tag">Our Mission</p>
+    <h2 class="ab-values-heading">What we stand for</h2>
+    <p class="ab-values-sub">
+      To raise fertility awareness, reduce stigma, and connect people to trusted
+      clinics, donors and surrogacy programmes — with education and support at
+      every step.
+    </p>
+    <div class="ab-values-grid">
+      <div class="ab-value-card">
+        <div class="ab-value-icon"><i class="fa-regular fa-heart"></i></div>
+        <h3>Compassion</h3>
+        <p>
+          Every fertility journey is met with empathy, dignity and deep respect.
+        </p>
+      </div>
+      <div class="ab-value-card">
+        <div class="ab-value-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3>Trust</h3>
+        <p>
+          We only connect you to verified, reputable clinics and specialists.
+        </p>
+      </div>
+      <div class="ab-value-card">
+        <div class="ab-value-icon"><i class="fa-regular fa-bookmark"></i></div>
+        <h3>Education</h3>
+        <p>We make complex fertility science understandable and actionable.</p>
+      </div>
+      <div class="ab-value-card">
+        <div class="ab-value-icon">
+          <i class="fa-solid fa-earth-africa"></i>
+        </div>
+        <h3>Pan-African</h3>
+        <p>Built for the realities of families across the whole continent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW WE GREW (TIMELINE) ===== -->
+<section class="ab-timeline">
+  <div class="ab-timeline-container">
+    <p class="section-tag">Our History</p>
+    <h2 class="section-heading">How we grew</h2>
+    <div class="ab-timeline-list">
+      <div class="ab-timeline-item">
+        <div class="ab-timeline-dot"></div>
+        <div class="ab-timeline-content">
+          <span class="ab-timeline-year">2023</span>
+          <h3>The network begins</h3>
+          <p>
+            FertilEus launched as an online hub for Africans talking openly
+            about fertility.
+          </p>
+        </div>
+      </div>
+      <div class="ab-timeline-item">
+        <div class="ab-timeline-dot"></div>
+        <div class="ab-timeline-content">
+          <span class="ab-timeline-year">2024</span>
+          <h3>Clinic verification</h3>
+          <p>First 30 partner clinics audited and onboarded.</p>
+        </div>
+      </div>
+      <div class="ab-timeline-item">
+        <div class="ab-timeline-dot"></div>
+        <div class="ab-timeline-content">
+          <span class="ab-timeline-year">2025</span>
+          <h3>Donor programme</h3>
+          <p>Africa's first community-led donor matching service launched.</p>
+        </div>
+      </div>
+      <div class="ab-timeline-item">
+        <div class="ab-timeline-dot"></div>
+        <div class="ab-timeline-content">
+          <span class="ab-timeline-year">2026</span>
+          <h3>Dr. Adakings</h3>
+          <p>24/7 AI fertility guide connected to everyone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

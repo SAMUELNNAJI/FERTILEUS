@@ -1,0 +1,265 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}{{ post.blog_title }} – FertilEus Network{% endblock %}
+{% block meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.blog_title }} – FertilEus Network{% endblock %}
+{% block og_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block twitter_title %}{{ post.blog_title }} – FertilEus Network{% endblock %}
+{% block twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block extra_head %}
+{% if post.blog_image %}
+<meta property="og:image" content="{{ post.blog_image.url }}" />
+<meta name="twitter:image" content="{{ post.blog_image.url }}" />
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ post.blog_title|escapejs }}",
+  "datePublished": "{{ post.blog_date|date:'c' }}",
+  "author": {"@type": "Person", "name": "{{ post.blog_author|escapejs }}"},
+  "publisher": {"@type": "Organization", "name": "FertilEus Network"},
+  "mainEntityOfPage": "{{ site_url }}{{ request.path }}"{% if post.blog_image %},
+  "image": "{{ post.blog_image.url }}"{% endif %}
+}
+</script>
+{% endblock %}
+{% block content %}
+<!-- ===== BLOG POST HERO ===== -->
+<section class="blog-post-hero">
+  <div class="blog-post-hero-inner">
+    <div class="blog-post-meta">
+      <span class="blog-post-cat">{{ post.blog_category }}</span>
+      <span class="blog-post-date">{{ post.blog_date|date:"j F Y" }}</span>
+      <span class="blog-post-read">{{ post.blog_read_time }} min read</span>
+    </div>
+    <h1 class="blog-post-title">{{ post.blog_title }}</h1>
+    <div class="blog-post-author">
+      <div class="blog-post-author-avatar">
+        <i class="fa-solid fa-user-doctor"></i>
+      </div>
+      <div class="blog-post-author-info">
+        <span class="blog-post-author-name">{{ post.blog_author }}</span>
+        <span class="blog-post-author-role">Fertility Specialist</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG POST CONTENT ===== -->
+<article class="blog-post-article">
+  <div class="blog-post-inner">
+    <div class="blog-post-featured-img">
+      {% if post.blog_image %}
+      <img
+        src="{{ post.blog_image.url }}"
+        alt="{{ post.blog_title }}"
+        onerror="this.src='{% static 'assests/image/Fertility.jpg' %}'"
+      />
+      {% else %}
+      <img
+        src="{% static 'assests/image/Fertility.jpg' %}"
+        alt="{{ post.blog_title }}"
+      />
+      {% endif %}
+    </div>
+
+    <div class="blog-post-body">
+      {{ post.blog_content|linebreaks }}
+
+      <div class="blog-post-cta-box">
+        <h3>Ready to take the next step?</h3>
+        <p>
+          Our fertility specialists are here to help you understand your options
+          and create a personalised plan.
+        </p>
+        <a href="{% url 'contact' %}" class="btn btn-green"
+          >Schedule a consultation</a
+        >
+      </div>
+    </div>
+
+    <!-- ===== RELATED POSTS ===== -->
+    {% if related_posts %}
+    <div class="blog-post-related">
+      <h3 class="blog-post-related-title">Related articles</h3>
+      <div class="blog-post-related-grid">
+        {% for rp in related_posts %}
+        <a
+          href="{% url 'blog_post' rp.blog_slug %}"
+          class="blog-post-related-card"
+        >
+          {% if rp.blog_image %}
+          <div class="blog-post-related-img">
+            <img src="{{ rp.blog_image.url }}" alt="{{ rp.blog_title }}" />
+          </div>
+          {% endif %}
+          <div class="blog-post-related-body">
+            <span class="blog-post-related-cat">{{ rp.blog_category }}</span>
+            <h4>{{ rp.blog_title }}</h4>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- ===== COMMUNITY DISCUSSION ===== -->
+    <div class="discussion-section">
+      <!-- Header row -->
+      <div class="discussion-header">
+        <div class="discussion-title-wrap">
+          <h2 class="discussion-title">Community discussion</h2>
+          <span class="discussion-count"
+            >{{ comments.count }} comment{{ comments.count|pluralize }}</span
+          >
+        </div>
+        <div class="discussion-sort">
+          <button class="disc-sort-btn active" data-sort="newest">
+            Newest
+          </button>
+          <button class="disc-sort-btn" data-sort="top">Top</button>
+          <button class="disc-sort-btn" data-sort="oldest">Oldest</button>
+        </div>
+      </div>
+
+      <hr class="discussion-divider" />
+
+      <!-- Comment form -->
+      <div class="discussion-form-wrap">
+        <form class="discussion-form" id="commentForm" method="POST" action="">
+          {% csrf_token %} {{ form.name }} {{ form.body }}
+          {% if form.body.errors %}
+          <p class="disc-form-error">{{ form.body.errors|join:", " }}</p>
+          {% endif %}
+          <div class="disc-form-footer">
+            <span class="disc-char-count"
+              ><span id="chars-left">1200</span> characters left ·
+              <span class="disc-kindness"
+                >be kind, this is a sensitive space</span
+              ></span
+            >
+            <button type="submit" class="btn btn-green disc-submit-btn">
+              <i class="fa-solid fa-paper-plane"></i> Post comment
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Comments list -->
+      <div class="discussion-list" id="commentList">
+        {% if comments %} {% for comment in comments %}
+        <div
+          class="disc-comment"
+          data-created="{{ comment.created|date:'U' }}"
+          data-likes="{{ comment.likes }}"
+        >
+          <div class="disc-comment-header">
+            <div class="disc-avatar">
+              {{ comment.name|slice:":1"|upper|default:"A" }}
+            </div>
+            <div class="disc-comment-meta">
+              <span class="disc-commenter"
+                >{{ comment.name|default:"Anonymous" }}</span
+              >
+              <span class="disc-time">{{ comment.created|timesince }} ago</span>
+            </div>
+          </div>
+          <p class="disc-comment-body">{{ comment.body }}</p>
+          <div class="disc-comment-actions">
+            <button
+              class="disc-action-btn"
+              data-action="helpful"
+              data-id="{{ comment.id }}"
+            >
+              <i class="fa-regular fa-heart"></i>
+              <span>Helpful</span>
+            </button>
+            <button
+              class="disc-action-btn"
+              data-action="reply"
+              data-id="{{ comment.id }}"
+            >
+              <i class="fa-regular fa-comment"></i>
+              <span>Reply</span>
+            </button>
+            <button
+              class="disc-action-btn"
+              data-action="edit"
+              data-id="{{ comment.id }}"
+            >
+              <i class="fa-regular fa-pen-to-square"></i>
+              <span>Edit</span>
+            </button>
+            <button
+              class="disc-action-btn"
+              data-action="delete"
+              data-id="{{ comment.id }}"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+              <span>Delete</span>
+            </button>
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <div class="disc-empty" id="discEmpty">
+          <p>No comments yet — start the conversation.</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- /discussion-section -->
+  </div>
+</article>
+
+{% endblock %} {% block extra_js %}
+<script>
+  /* ---- Character counter ---- */
+  const textarea = document.getElementById("comment-body");
+  const charsLeft = document.getElementById("chars-left");
+  if (textarea) {
+    textarea.addEventListener("input", () => {
+      charsLeft.textContent = 1200 - textarea.value.length;
+    });
+  }
+
+  /* ---- Sort buttons ---- */
+  const sortBtns = document.querySelectorAll(".disc-sort-btn");
+  sortBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sortBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const list = document.getElementById("commentList");
+      const items = [...list.querySelectorAll(".disc-comment")];
+      const sort = btn.dataset.sort;
+      items.sort((a, b) => {
+        if (sort === "newest") return b.dataset.created - a.dataset.created;
+        if (sort === "oldest") return a.dataset.created - b.dataset.created;
+        if (sort === "top") return b.dataset.likes - a.dataset.likes;
+        return 0;
+      });
+      items.forEach((el) => list.appendChild(el));
+    });
+  });
+
+  /* ---- Action buttons (Helpful, Reply, Edit, Delete) ---- */
+  document.querySelectorAll(".disc-action-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const action = btn.dataset.action;
+      const id = btn.dataset.id;
+
+      if (action === "helpful") {
+        const icon = btn.querySelector("i");
+        const liked = btn.classList.toggle("active");
+        icon.className = liked ? "fa-solid fa-heart" : "fa-regular fa-heart";
+      } else if (action === "reply") {
+        const textarea = document.getElementById("comment-body");
+        textarea.focus();
+        textarea.value = `@${btn.closest(".disc-comment").querySelector(".disc-commenter").textContent} `;
+      } else if (action === "edit") {
+        alert("Edit functionality - to be implemented");
+    });
+  });
+</script>
+{% endblock %}

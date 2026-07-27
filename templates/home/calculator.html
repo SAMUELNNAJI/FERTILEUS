@@ -1,0 +1,355 @@
+{% extends "home/base.html" %} {% load static %} {% block title %}Fertility
+Calculator – FertilEus Network{% endblock %} {% block meta_description %}Use the FertilEus fertility calculator to better understand your menstrual cycle and likely fertile window.{% endblock %} {% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="calc-hero">
+  <div class="calc-hero-inner">
+    <span class="calc-pill-tag">
+      <i class="fa-solid fa-plus"></i> Free Tools
+    </span>
+    <h1 class="calc-hero-heading">Fertility <em>calculator</em></h1>
+    <p class="calc-hero-sub">
+      Find your fertile window and ovulation day, or estimate a due date — with
+      the reasoning shown, not just a number.
+    </p>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR BODY ===== -->
+<section class="calc-body">
+  <div class="calc-body-inner">
+    <div class="calc-tabs" role="tablist">
+      <button
+        class="calc-tab active"
+        id="tab-ovulation"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-ovulation"
+      >
+        Ovulation &amp; fertile window
+      </button>
+      <button
+        class="calc-tab"
+        id="tab-due"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-due"
+      >
+        Due date
+      </button>
+    </div>
+
+    <!-- OVULATION PANEL -->
+    <div class="calc-panel" id="panel-ovulation" role="tabpanel">
+      <div class="calc-layout">
+        <div class="calc-inputs">
+          <h2 class="calc-inputs-title">Your cycle</h2>
+          <div class="calc-field">
+            <label for="lmp">First day of last period</label>
+            <input type="date" id="lmp" name="lmp" />
+          </div>
+          <div class="calc-field">
+            <label for="cycle-length"
+              >Average cycle length
+              <span class="calc-val" id="cycle-val">28 days</span></label
+            >
+            <input
+              type="range"
+              id="cycle-length"
+              name="cycle-length"
+              min="21"
+              max="45"
+              value="28"
+              class="calc-range"
+            />
+          </div>
+          <div class="calc-field">
+            <label for="luteal"
+              >Luteal phase length
+              <span class="calc-val" id="luteal-val">14 days</span></label
+            >
+            <input
+              type="range"
+              id="luteal"
+              name="luteal"
+              min="10"
+              max="16"
+              value="14"
+              class="calc-range"
+            />
+            <p class="calc-hint">
+              The gap between ovulation and your next period. 14 days is
+              typical.
+            </p>
+          </div>
+        </div>
+        <div class="calc-results" id="results-ovulation">
+          <div class="calc-window-card" id="window-card">
+            <p class="calc-window-label">
+              OVULATION IN <span id="days-until">– –</span> DAYS
+            </p>
+            <h2 class="calc-window-dates" id="window-dates">– – –</h2>
+            <p class="calc-window-sub" id="window-sub">
+              Enter your last period date to see results
+            </p>
+          </div>
+          <div class="calc-key-dates" id="key-dates">
+            <div class="calc-key-item">
+              <span class="calc-key-label">Ovulation day</span>
+              <span class="calc-key-val" id="ovulation-day">–</span>
+            </div>
+            <div class="calc-key-item">
+              <span class="calc-key-label">Next period</span>
+              <span class="calc-key-val" id="next-period">–</span>
+            </div>
+            <div class="calc-key-item">
+              <span class="calc-key-label">Earliest reliable test</span>
+              <span class="calc-key-val" id="earliest-test">–</span>
+            </div>
+          </div>
+          <div class="calc-chart-wrap" id="chart-wrap">
+            <h3 class="calc-chart-title">Day-by-day conception chance</h3>
+            <p class="calc-chart-sub">
+              Relative likelihood of conception if intercourse happens on each
+              day.
+            </p>
+            <div class="calc-chart" id="day-chart"></div>
+          </div>
+          <div class="calc-due-mini" id="due-mini">
+            <p class="calc-due-label">IF YOU CONCEIVE THIS CYCLE</p>
+            <h3 class="calc-due-date" id="due-date-ov">–</h3>
+            <p class="calc-due-note">
+              Based on 266 days from ovulation. A dating scan will refine this.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUE DATE PANEL -->
+    <div class="calc-panel hidden" id="panel-due" role="tabpanel">
+      <div class="calc-layout">
+        <div class="calc-inputs">
+          <h2 class="calc-inputs-title">Due date</h2>
+          <div class="calc-field">
+            <label for="lmp-due">First day of last period</label>
+            <input type="date" id="lmp-due" name="lmp-due" />
+          </div>
+          <div class="calc-field">
+            <label for="cycle-due"
+              >Average cycle length
+              <span class="calc-val" id="cycle-due-val">28 days</span></label
+            >
+            <input
+              type="range"
+              id="cycle-due"
+              name="cycle-due"
+              min="21"
+              max="45"
+              value="28"
+              class="calc-range"
+            />
+          </div>
+        </div>
+        <div class="calc-results" id="results-due">
+          <div class="calc-window-card" id="due-card">
+            <p class="calc-window-label">ESTIMATED DUE DATE</p>
+            <h2 class="calc-window-dates" id="due-result">–</h2>
+            <p class="calc-window-sub" id="due-sub">
+              Enter your last period date to see results
+            </p>
+          </div>
+          <div class="calc-key-dates">
+            <div class="calc-key-item">
+              <span class="calc-key-label">Conception estimate</span>
+              <span class="calc-key-val" id="conception-est">–</span>
+            </div>
+            <div class="calc-key-item">
+              <span class="calc-key-label">End of first trimester</span>
+              <span class="calc-key-val" id="trimester-1">–</span>
+            </div>
+            <div class="calc-key-item">
+              <span class="calc-key-label">End of second trimester</span>
+              <span class="calc-key-val" id="trimester-2">–</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DISCLAIMER BANNER ===== -->
+<div class="calc-disclaimer">
+  <div class="calc-disclaimer-inner">
+    <i class="fa-solid fa-circle-info"></i>
+    <p>
+      These estimates are educational and assume regular cycles. Irregular
+      bleeding, PCOS or thyroid conditions change the picture — our team can
+      help you interpret yours.
+    </p>
+    <a href="{% url 'contact' %}" class="btn btn-green calc-speak-btn"
+      >Speak to us</a
+    >
+  </div>
+</div>
+
+{% endblock %} {% block extra_js %}
+<script>
+  (function () {
+    const MONTHS = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    function fmt(d) {
+      return (
+        DAYS[d.getDay()] +
+        ", " +
+        d.getDate() +
+        " " +
+        MONTHS[d.getMonth()] +
+        " " +
+        d.getFullYear()
+      );
+    }
+    function fmtShort(d) {
+      return d.getDate() + " " + MONTHS[d.getMonth()];
+    }
+    function addDays(d, n) {
+      const r = new Date(d);
+      r.setDate(r.getDate() + n);
+      return r;
+    }
+    const PROB = [-5, -4, -3, -2, -1, 0, 1].map((offset, i) => ({
+      offset,
+      pct: [4, 10, 18, 24, 33, 31, 8][i],
+    }));
+
+    function calcOvulation() {
+      const lmpVal = document.getElementById("lmp").value;
+      const cycle = parseInt(document.getElementById("cycle-length").value);
+      const luteal = parseInt(document.getElementById("luteal").value);
+      if (!lmpVal) return;
+      const lmp = new Date(lmpVal);
+      const ovDay = addDays(lmp, cycle - luteal);
+      const fertStart = addDays(ovDay, -5),
+        fertEnd = addDays(ovDay, 1);
+      const nextPeriod = addDays(lmp, cycle),
+        testDay = addDays(ovDay, 12),
+        dueDate = addDays(ovDay, 266);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const daysUntil = Math.round((ovDay - today) / 86400000);
+      document.getElementById("days-until").textContent =
+        daysUntil > 0
+          ? daysUntil
+          : daysUntil === 0
+            ? "Today"
+            : Math.abs(daysUntil) + " days ago";
+      document.getElementById("window-dates").textContent =
+        fmtShort(fertStart) + " – " + fmtShort(fertEnd);
+      document.getElementById("window-sub").textContent =
+        "Peak fertility around " +
+        fmt(ovDay) +
+        " · Cycle day " +
+        (cycle - luteal);
+      document.getElementById("ovulation-day").textContent = fmt(ovDay);
+      document.getElementById("next-period").textContent = fmt(nextPeriod);
+      document.getElementById("earliest-test").textContent = fmt(testDay);
+      const chart = document.getElementById("day-chart");
+      chart.innerHTML = "";
+      PROB.forEach(({ offset, pct }) => {
+        const day = addDays(ovDay, offset),
+          row = document.createElement("div");
+        row.className = "calc-bar-row";
+        row.innerHTML = `<span class="calc-bar-label">${fmtShort(day)}</span><div class="calc-bar-track"><div class="calc-bar-fill" style="width:${pct}%"></div></div><span class="calc-bar-pct">${pct}%</span>`;
+        chart.appendChild(row);
+      });
+      document.getElementById("due-date-ov").textContent =
+        "Estimated due date " + fmt(dueDate);
+    }
+
+    function calcDueDate() {
+      const lmpVal = document.getElementById("lmp-due").value;
+      const cycle = parseInt(document.getElementById("cycle-due").value);
+      if (!lmpVal) return;
+      const lmp = new Date(lmpVal);
+      document.getElementById("due-result").textContent = fmt(
+        addDays(lmp, 280),
+      );
+      document.getElementById("due-sub").textContent =
+        "280 days (40 weeks) from the first day of your last period.";
+      document.getElementById("conception-est").textContent = fmt(
+        addDays(lmp, cycle - 14),
+      );
+      document.getElementById("trimester-1").textContent = fmt(
+        addDays(lmp, 98),
+      );
+      document.getElementById("trimester-2").textContent = fmt(
+        addDays(lmp, 182),
+      );
+    }
+
+    function updateRangeTrack(el) {
+      const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+      el.style.background = `linear-gradient(to right,#356a4b 0%,#356a4b ${pct}%,#dde8e2 ${pct}%,#dde8e2 100%)`;
+    }
+
+    document.getElementById("lmp").addEventListener("change", calcOvulation);
+    document
+      .getElementById("cycle-length")
+      .addEventListener("input", function () {
+        document.getElementById("cycle-val").textContent = this.value + " days";
+        updateRangeTrack(this);
+        calcOvulation();
+      });
+    document.getElementById("luteal").addEventListener("input", function () {
+      document.getElementById("luteal-val").textContent = this.value + " days";
+      updateRangeTrack(this);
+      calcOvulation();
+    });
+    document.getElementById("lmp-due").addEventListener("change", calcDueDate);
+    document.getElementById("cycle-due").addEventListener("input", function () {
+      document.getElementById("cycle-due-val").textContent =
+        this.value + " days";
+      updateRangeTrack(this);
+      calcDueDate();
+    });
+
+    const todayStr = new Date().toISOString().split("T")[0];
+    document.getElementById("lmp").value = todayStr;
+    document.getElementById("lmp-due").value = todayStr;
+    document.querySelectorAll(".calc-range").forEach(updateRangeTrack);
+    calcOvulation();
+    calcDueDate();
+
+    document.querySelectorAll(".calc-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".calc-tab").forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        document
+          .querySelectorAll(".calc-panel")
+          .forEach((p) => p.classList.add("hidden"));
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+        document
+          .getElementById(btn.getAttribute("aria-controls"))
+          .classList.remove("hidden");
+      });
+    });
+  })();
+</script>
+{% endblock %}

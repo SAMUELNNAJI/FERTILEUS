@@ -1,0 +1,184 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}Contact – FertilEus Network{% endblock %}
+{% block meta_description %}Contact FertilEus for compassionate fertility guidance, education, and support across Africa.{% endblock %}
+{% block content %}
+
+<!-- ===== CONTACT HERO ===== -->
+<section class="ct-hero">
+  <div class="ct-hero-inner">
+    <span class="ct-pill-tag">Contact</span>
+    <h1 class="ct-hero-heading">We're here to <em>listen</em></h1>
+    <p class="ct-hero-sub">
+      Ask anything — about your cycle, a clinic, donation or surrogacy. Nothing
+      is too small or too personal.
+    </p>
+  </div>
+</section>
+
+<!-- ===== FORM + SIDEBAR ===== -->
+<section class="ct-body">
+  <div class="ct-body-container">
+    <!-- LEFT: Contact form -->
+    <div class="ct-form-wrap">
+      <h2 class="ct-form-title">Send us a message</h2>
+      <form class="ct-form" id="contactForm" novalidate>
+        {% csrf_token %}
+        <div class="ct-form-row">
+          <div class="ct-field">
+            <label for="fullname">Full name</label>
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              placeholder="Amina Bello"
+              required
+            />
+          </div>
+          <div class="ct-field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+        </div>
+        <div class="ct-form-row">
+          <div class="ct-field">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="+234 …" />
+          </div>
+          <div class="ct-field">
+            <label for="topic">Topic</label>
+            <div class="ct-select-wrap">
+              <select id="topic" name="topic">
+                <option value="" disabled selected>Choose a topic</option>
+                <option value="General enquiry">General enquiry</option>
+                <option value="Fertility guidance">Fertility guidance</option>
+                <option value="Egg donation">Egg donation</option>
+                <option value="Surrogacy">Surrogacy</option>
+                <option value="IVF support">IVF support</option>
+                <option value="Partner with us">Partner with us</option>
+              </select>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+        <div class="ct-field ct-field--full">
+          <label for="message">How can we help?</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="Share as much or as little as you're comfortable with."
+          ></textarea>
+        </div>
+        <div class="ct-form-footer">
+          <button type="submit" class="btn btn-green ct-submit-btn">
+            Send message
+          </button>
+          <p class="ct-privacy">
+            Your details stay confidential and are never shared with third
+            parties.
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="ct-sidebar">
+      <div class="ct-reach">
+        <h3 class="ct-reach-title">Reach us directly</h3>
+        <ul class="ct-reach-list">
+          <li>
+            <div class="ct-reach-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div>
+              <span class="ct-reach-label">Email</span>
+              <span class="ct-reach-value">fertileus1@gmail.com</span>
+            </div>
+          </li>
+          <li>
+            <div class="ct-reach-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <span class="ct-reach-label">Phone</span>
+              <span class="ct-reach-value">+2349018004098</span>
+            </div>
+          </li>
+          <li>
+            <div class="ct-reach-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="ct-reach-label">Office</span>
+              <span class="ct-reach-value"
+                >Abia, Nigeria · serving 12+ countries</span
+              >
+            </div>
+          </li>
+          <li>
+            <div class="ct-reach-icon"><i class="fa-regular fa-clock"></i></div>
+            <div>
+              <span class="ct-reach-label">Hours</span>
+              <span class="ct-reach-value">Mon–Fri, 9am–6pm WAT</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="ct-ai-card">
+        <div class="ct-ai-icon"><i class="fa-regular fa-comment-dots"></i></div>
+        <h4>Need an answer right now?</h4>
+        <p>
+          Dr. Adakings, our AI fertility guide, is available any hour of the
+          day.
+        </p>
+        <a href="#" class="btn ct-ai-btn">Start chatting</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+{% endblock %} {% block extra_js %}
+<script>
+  const form = document.getElementById("contactForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const topic = document.getElementById("topic").value;
+    const message = document.getElementById("message").value.trim();
+    if (!name || !email) {
+      alert("Please fill in your name and email.");
+      return;
+    }
+    const lines = [
+      "🌿 *FertilEus – New Contact Form Message*",
+      "",
+      `*Name:* ${name}`,
+      `*Email:* ${email}`,
+      phone ? `*Phone:* ${phone}` : null,
+      topic ? `*Topic:* ${topic}` : null,
+      message ? `*Message:*\n${message}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    window.open(
+      `https://wa.me/2349018004098?text=${encodeURIComponent(lines)}`,
+      "_blank",
+    );
+    const btn = form.querySelector(".ct-submit-btn");
+    btn.textContent = "Opening WhatsApp ✓";
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = "Send message";
+      btn.disabled = false;
+      form.reset();
+    }, 3000);
+  });
+</script>
+{% endblock %}

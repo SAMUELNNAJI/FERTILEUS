@@ -1,0 +1,664 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}" />
+    <title>{% block title %}FertilEus Network{% endblock %}</title>
+    <meta
+      name="description"
+      content="{% block meta_description %}FertilEus Network provides trusted fertility education, support, and guidance for people across Africa.{% endblock %}"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="{{ site_url }}{{ request.path }}" />
+    <meta property="og:site_name" content="FertilEus Network" />
+    <meta
+      property="og:type"
+      content="{% block og_type %}website{% endblock %}"
+    />
+    <meta
+      property="og:title"
+      content="{% block og_title %}{% block og_title_default %}FertilEus Network{% endblock %}{% endblock %}"
+    />
+    <meta
+      property="og:description"
+      content="{% block og_description %}Trusted fertility education, support, and guidance across Africa.{% endblock %}"
+    />
+    <meta property="og:url" content="{{ site_url }}{{ request.path }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="{% block twitter_title %}FertilEus Network{% endblock %}"
+    />
+    <meta
+      name="twitter:description"
+      content="{% block twitter_description %}Trusted fertility education, support, and guidance across Africa.{% endblock %}"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="{% url 'home' %}" class="logo">
+          <span class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-13 5l-1.21-1.21A9.93 9.93 0 0 1 17 8z"
+              />
+            </svg>
+          </span>
+          <span class="logo-text">FertilEus</span>
+        </a>
+        <ul class="nav-links">
+          <li>
+            <a
+              href="{% url 'home' %}"
+              class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'about' %}"
+              class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'egg_donation' %}"
+              class="{% if request.resolver_match.url_name == 'egg_donation' %}active{% endif %}"
+              >Egg Donation</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'calculator' %}"
+              class="{% if request.resolver_match.url_name == 'calculator' %}active{% endif %}"
+              >Calculator</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'blog' %}"
+              class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'contact' %}"
+              class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <a href="{% url 'contact' %}" class="btn btn-green nav-cta"
+          >Get Support</a
+        >
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== MOBILE NAV OVERLAY ===== -->
+    <div class="mob-nav" id="mobNav" aria-hidden="true">
+      <button class="mob-nav-close" id="mobNavClose" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+      <ul class="mob-nav-links">
+        <li>
+          <a href="{% url 'home' %}">Home<span class="mob-num">01</span></a>
+        </li>
+        <li>
+          <a href="{% url 'about' %}">About<span class="mob-num">02</span></a>
+        </li>
+        <li>
+          <a href="{% url 'egg_donation' %}">Egg Donation<span class="mob-num">03</span></a>
+        </li>
+        <li>
+          <a href="{% url 'calculator' %}">Calculator<span class="mob-num">04</span></a>
+        </li>
+        <li>
+          <a href="{% url 'blog' %}">Blog<span class="mob-num">05</span></a>
+        </li>
+        <li>
+          <a href="{% url 'contact' %}">Contact<span class="mob-num">06</span></a>
+        </li>
+      </ul>
+      <a href="{% url 'contact' %}" class="btn mob-support-btn">Get Support</a>
+      <p class="mob-nav-tagline">
+        Fertility care, guidance &amp; community across Africa
+      </p>
+    </div>
+      <p class="mob-nav-tagline">
+        Fertility care, guidance &amp; community across Africa
+      </p>
+    </div>
+
+    <!-- ===== PAGE CONTENT ===== -->
+    {% block content %}{% endblock %}
+
+    <!-- ===== AI BOT FLOATING BUTTON ===== -->
+    <button
+      id="aiBotFloatBtn"
+      class="ai-bot-float-btn"
+      title="Chat with Dr. Adakings"
+    >
+      <i class="fa-solid fa-user-doctor"></i>
+    </button>
+
+    <!-- ===== AI BOT POPUP MODAL ===== -->
+    <div id="aiBotPopup" class="ai-bot-popup">
+      <!-- Header -->
+      <div class="ai-bot-popup-header">
+        <div class="ai-bot-popup-avatar">
+          <i class="fa-solid fa-user-doctor"></i>
+        </div>
+        <div class="ai-bot-popup-info">
+          <h3>Dr. Adakings</h3>
+          <span class="ai-bot-popup-status"
+            >AI fertility guide &middot; online</span
+          >
+        </div>
+        <div class="ai-bot-popup-actions">
+          <button
+            id="aiBotHistoryBtn"
+            class="ai-bot-hdr-btn"
+            title="Chat history"
+          >
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </button>
+          <button id="aiBotNewBtn" class="ai-bot-hdr-btn" title="New chat">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <button id="aiBotCloseBtn" class="ai-bot-hdr-btn" title="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- History Panel (slides in over messages) -->
+      <div class="ai-bot-history-panel" id="aiBotHistoryPanel">
+        <div class="ai-bot-history-header">
+          <span>Chat History</span>
+          <button id="aiBotHistoryBackBtn" class="ai-bot-hdr-btn" title="Back">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="ai-bot-history-list" id="aiBotHistoryList">
+          <p class="ai-bot-history-empty">Loading…</p>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="ai-bot-popup-messages" id="aiBotMessages">
+        <div class="ai-bot-welcome">
+          <h2>Hello, I'm Dr. Adakings</h2>
+          <p>
+            Ask me anything about fertility, cycles, IVF,<br />
+            donation or surrogacy. Everything you share<br />
+            stays on this device.
+          </p>
+          <div class="ai-bot-suggested">
+            <button
+              class="ai-bot-suggested-btn"
+              data-question="When am I most fertile in my cycle?"
+            >
+              When am I most fertile in my cycle?
+            </button>
+            <button
+              class="ai-bot-suggested-btn"
+              data-question="How does egg donation work?"
+            >
+              How does egg donation work?
+            </button>
+            <button
+              class="ai-bot-suggested-btn"
+              data-question="What are the early signs of pregnancy?"
+            >
+              What are the early signs of pregnancy?
+            </button>
+            <button
+              class="ai-bot-suggested-btn"
+              data-question="How does IVF treatment work?"
+            >
+              How does IVF treatment work?
+            </button>
+            <button
+              class="ai-bot-suggested-btn"
+              data-question="What lifestyle changes improve fertility?"
+            >
+              What lifestyle changes improve fertility?
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="ai-bot-popup-input">
+        <form id="aiBotForm">
+          {% csrf_token %}
+          <div class="ai-bot-input-wrap">
+            <textarea
+              id="aiBotInput"
+              class="ai-bot-textarea"
+              placeholder="Ask about your fertility journey..."
+              rows="1"
+            ></textarea>
+            <button type="submit" class="ai-bot-send-btn" id="aiBotSendBtn">
+              <i class="fa-solid fa-arrow-turn-down fa-rotate-90"></i>
+            </button>
+          </div>
+        </form>
+        <p class="ai-bot-disclaimer">
+          Educational guidance only — always confirm with your clinician.
+        </p>
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <p class="footer-brand-name">FertilEus Network</p>
+          <p class="footer-brand-desc">
+            A community-driven fertility ecosystem built for Africa — education,
+            verified clinics, donor matching and surrogacy guidance, all in one
+            place.
+          </p>
+          <div class="footer-contact">
+            <p><i class="fa-regular fa-envelope"></i> fertileus1@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i> +2349018004098</p>
+            <p>
+              <i class="fa-regular fa-circle-dot"></i> Abia, Nigeria —
+              Pan-African
+            </p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="{% url 'about' %}">About us</a></li>
+            <li><a href="{% url 'egg_donation' %}">Egg donation</a></li>
+            <li><a href="{% url 'calculator' %}">Ovulation calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="{% url 'blog' %}">Fertility journal</a></li>
+            <li><a href="#aiBotPopup" data-open-ai-bot>Chat with Dr. Adakings</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FertilEus Network. All rights reserved.</p>
+        <p class="footer-disclaimer">
+          Information here is educational and never a substitute for medical
+          advice.
+        </p>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+
+    <!-- AI Bot Popup Script -->
+    <script>
+      const aiBotFloatBtn = document.getElementById("aiBotFloatBtn");
+      const aiBotPopup = document.getElementById("aiBotPopup");
+      const aiBotCloseBtn = document.getElementById("aiBotCloseBtn");
+      const aiBotNewBtn = document.getElementById("aiBotNewBtn");
+      const aiBotHistoryBtn = document.getElementById("aiBotHistoryBtn");
+      const aiBotHistoryBackBtn = document.getElementById(
+        "aiBotHistoryBackBtn",
+      );
+      const aiBotHistoryPanel = document.getElementById("aiBotHistoryPanel");
+      const aiBotHistoryList = document.getElementById("aiBotHistoryList");
+      const aiBotForm = document.getElementById("aiBotForm");
+      const aiBotInput = document.getElementById("aiBotInput");
+      const aiBotSendBtn = document.getElementById("aiBotSendBtn");
+      const aiBotMessages = document.getElementById("aiBotMessages");
+      const csrfToken =
+        document.querySelector("[name=csrfmiddlewaretoken]")?.value || "";
+
+      let currentSessionId = localStorage.getItem("aiBotSessionId") || "";
+
+      // ── Validate stored session is still alive ────────────────
+      if (currentSessionId) {
+        fetch(`/ai-bot/session/${currentSessionId}/`)
+          .then((r) => {
+            if (!r.ok) {
+              currentSessionId = "";
+              localStorage.removeItem("aiBotSessionId");
+            }
+          })
+          .catch(() => {
+            currentSessionId = "";
+            localStorage.removeItem("aiBotSessionId");
+          });
+      }
+
+      // ── Toggle popup ──────────────────────────────────────────
+      aiBotFloatBtn.addEventListener("click", () => {
+        if (hasDragged) return;
+        aiBotPopup.classList.toggle("active");
+      });
+
+      document.querySelectorAll("[data-open-ai-bot]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          aiBotPopup.classList.add("active");
+          aiBotHistoryPanel.classList.remove("active");
+          aiBotInput.focus();
+        });
+      });
+
+      aiBotCloseBtn.addEventListener("click", () => {
+        aiBotPopup.classList.remove("active");
+        aiBotHistoryPanel.classList.remove("active");
+      });
+
+      // ── History panel ─────────────────────────────────────────
+      aiBotHistoryBtn.addEventListener("click", async () => {
+        aiBotHistoryPanel.classList.add("active");
+        aiBotHistoryList.innerHTML =
+          '<p class="ai-bot-history-empty">Loading…</p>';
+        try {
+          const res = await fetch("/ai-bot/history/");
+          const data = await res.json();
+          if (!data.sessions || data.sessions.length === 0) {
+            aiBotHistoryList.innerHTML =
+              '<p class="ai-bot-history-empty">No previous chats yet.</p>';
+            return;
+          }
+          aiBotHistoryList.innerHTML = "";
+          data.sessions.forEach((sess) => {
+            const item = document.createElement("button");
+            item.className =
+              "ai-bot-history-item" +
+              (sess.session_id === currentSessionId ? " active" : "");
+            item.innerHTML = `
+              <span class="ai-bot-history-preview">${escapeHtml(sess.preview)}</span>
+              <span class="ai-bot-history-date">${escapeHtml(sess.date)}</span>`;
+            item.addEventListener("click", () => loadSession(sess.session_id));
+            aiBotHistoryList.appendChild(item);
+          });
+        } catch (err) {
+          aiBotHistoryList.innerHTML =
+            '<p class="ai-bot-history-empty">Could not load history.</p>';
+        }
+      });
+
+      aiBotHistoryBackBtn.addEventListener("click", () => {
+        aiBotHistoryPanel.classList.remove("active");
+      });
+
+      async function loadSession(sessionId) {
+        try {
+          const res = await fetch(`/ai-bot/session/${sessionId}/`);
+          const data = await res.json();
+          currentSessionId = data.session_id;
+          localStorage.setItem("aiBotSessionId", currentSessionId);
+
+          aiBotMessages.innerHTML = "";
+          data.messages.forEach((m) => addMessageToUI(m.role, m.content));
+          aiBotHistoryPanel.classList.remove("active");
+        } catch (err) {
+          console.error("Load session error:", err);
+        }
+      }
+
+      // ── New chat ──────────────────────────────────────────────
+      aiBotNewBtn.addEventListener("click", async () => {
+        try {
+          const res = await fetch("/ai-bot/new/", {
+            method: "POST",
+            headers: { "X-CSRFToken": csrfToken },
+          });
+          const data = await res.json();
+          if (data.session_id) {
+            currentSessionId = data.session_id;
+            localStorage.setItem("aiBotSessionId", currentSessionId);
+          }
+          showWelcome();
+          aiBotHistoryPanel.classList.remove("active");
+        } catch (err) {
+          console.error("New chat error:", err);
+        }
+      });
+
+      function showWelcome() {
+        aiBotMessages.innerHTML = `
+          <div class="ai-bot-welcome">
+            <h2>Hello, I'm Dr. Adakings</h2>
+            <p>Ask me anything about fertility, cycles, IVF,<br>
+               donation or surrogacy. Everything you share<br>
+               stays on this device.</p>
+            <div class="ai-bot-suggested">
+              <button class="ai-bot-suggested-btn" data-question="When am I most fertile in my cycle?">When am I most fertile in my cycle?</button>
+              <button class="ai-bot-suggested-btn" data-question="How does egg donation work?">How does egg donation work?</button>
+              <button class="ai-bot-suggested-btn" data-question="What are the early signs of pregnancy?">What are the early signs of pregnancy?</button>
+              <button class="ai-bot-suggested-btn" data-question="How does IVF treatment work?">How does IVF treatment work?</button>
+              <button class="ai-bot-suggested-btn" data-question="What lifestyle changes improve fertility?">What lifestyle changes improve fertility?</button>
+            </div>
+          </div>`;
+        bindSuggestedBtns();
+      }
+
+      // ── Auto-resize textarea ──────────────────────────────────
+      aiBotInput.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+      });
+
+      // ── Suggested questions ───────────────────────────────────
+      function bindSuggestedBtns() {
+        document.querySelectorAll(".ai-bot-suggested-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            aiBotInput.value = btn.dataset.question;
+            aiBotForm.dispatchEvent(new Event("submit"));
+          });
+        });
+      }
+      bindSuggestedBtns();
+
+      // ── Typing indicator ──────────────────────────────────────
+      function showTyping() {
+        const d = document.createElement("div");
+        d.className = "ai-bot-message assistant";
+        d.id = "aiBotTyping";
+        d.innerHTML = `<div class="ai-bot-message-content"><div class="ai-bot-typing"><span></span><span></span><span></span></div></div>`;
+        aiBotMessages.appendChild(d);
+        aiBotMessages.scrollTop = aiBotMessages.scrollHeight;
+      }
+      function hideTyping() {
+        const t = document.getElementById("aiBotTyping");
+        if (t) t.remove();
+      }
+
+      // ── Send message ──────────────────────────────────────────
+      aiBotForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const message = aiBotInput.value.trim();
+        if (!message) return;
+
+        const welcome = aiBotMessages.querySelector(".ai-bot-welcome");
+        if (welcome) welcome.remove();
+
+        addMessageToUI("user", message);
+        aiBotInput.value = "";
+        aiBotInput.style.height = "auto";
+        aiBotSendBtn.disabled = true;
+        showTyping();
+
+        try {
+          const response = await fetch("/ai-bot/send/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken,
+            },
+            body: JSON.stringify({ session_id: currentSessionId, message }),
+          });
+          const data = await response.json();
+          hideTyping();
+
+          if (data.session_id) {
+            currentSessionId = data.session_id;
+            localStorage.setItem("aiBotSessionId", currentSessionId);
+          }
+          addMessageToUI(
+            "assistant",
+            data.response || "Sorry, there was an error. Please try again.",
+          );
+        } catch (err) {
+          hideTyping();
+          addMessageToUI(
+            "assistant",
+            "Sorry, there was an error. Please try again.",
+          );
+        } finally {
+          aiBotSendBtn.disabled = false;
+        }
+      });
+
+      // ── Render message ────────────────────────────────────────
+      function addMessageToUI(role, content) {
+        const wrap = document.createElement("div");
+        wrap.className = `ai-bot-message ${role}`;
+        const inner = document.createElement("div");
+        inner.className = "ai-bot-message-content";
+        const text = document.createElement("div");
+        text.className = "ai-bot-message-text";
+        text.innerHTML = content.replace(/\n/g, "<br>");
+        inner.appendChild(text);
+
+        // Copy button — only on assistant messages
+        if (role === "assistant") {
+          const copyBtn = document.createElement("button");
+          copyBtn.className = "ai-bot-copy-btn";
+          copyBtn.title = "Copy response";
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+          copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(content).then(() => {
+              copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+              copyBtn.classList.add("copied");
+              setTimeout(() => {
+                copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                copyBtn.classList.remove("copied");
+              }, 2000);
+            });
+          });
+          inner.appendChild(copyBtn);
+        }
+
+        wrap.appendChild(inner);
+        aiBotMessages.appendChild(wrap);
+        aiBotMessages.scrollTop = aiBotMessages.scrollHeight;
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      // ── Draggable floating button ─────────────────────────────
+      let isDragging = false;
+      let hasDragged = false;
+      let startX, startY, origRight, origBottom;
+
+      aiBotFloatBtn.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        isDragging = true;
+        hasDragged = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        const r = aiBotFloatBtn.getBoundingClientRect();
+        origRight = window.innerWidth - r.right;
+        origBottom = window.innerHeight - r.bottom;
+        document.body.style.userSelect = "none";
+      });
+
+      aiBotFloatBtn.addEventListener(
+        "touchstart",
+        (e) => {
+          const t = e.touches[0];
+          isDragging = true;
+          hasDragged = false;
+          startX = t.clientX;
+          startY = t.clientY;
+          const r = aiBotFloatBtn.getBoundingClientRect();
+          origRight = window.innerWidth - r.right;
+          origBottom = window.innerHeight - r.bottom;
+        },
+        { passive: true },
+      );
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX,
+          dy = e.clientY - startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) hasDragged = true;
+        moveFloatBtn(dx, dy);
+      });
+
+      document.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!isDragging) return;
+          const t = e.touches[0];
+          const dx = t.clientX - startX,
+            dy = t.clientY - startY;
+          if (Math.abs(dx) > 4 || Math.abs(dy) > 4) hasDragged = true;
+          moveFloatBtn(dx, dy);
+        },
+        { passive: true },
+      );
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+        document.body.style.userSelect = "";
+      });
+      document.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+
+      function moveFloatBtn(dx, dy) {
+        const bw = aiBotFloatBtn.offsetWidth,
+          bh = aiBotFloatBtn.offsetHeight;
+        let r = Math.max(
+          8,
+          Math.min(origRight - dx, window.innerWidth - bw - 8),
+        );
+        let b = Math.max(
+          8,
+          Math.min(origBottom - dy, window.innerHeight - bh - 8),
+        );
+        aiBotFloatBtn.style.right = r + "px";
+        aiBotFloatBtn.style.bottom = b + "px";
+        aiBotFloatBtn.style.transform = "none";
+        aiBotFloatBtn.style.left = "auto";
+        aiBotFloatBtn.style.top = "auto";
+      }
+    </script>
+  </body>
+</html>

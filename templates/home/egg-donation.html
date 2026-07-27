@@ -1,0 +1,170 @@
+{% extends "home/base.html" %} {% load static %} {% block title %}Egg Donation –
+FertilEus Network{% endblock %} {% block meta_description %}Understand egg donation, explore your options, and find supportive fertility guidance with FertilEus.{% endblock %} {% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="ed-hero">
+  <div class="ed-hero-container">
+    <div class="ed-hero-left">
+      <span class="ed-pill-tag">Egg Donation</span>
+      <h1 class="ed-hero-heading">Give someone a<br /><em>beginning</em></h1>
+      <p class="ed-hero-sub">
+        Whether you are considering donating or receiving donor eggs, we explain
+        every step honestly — the medicine, the timeline, the risks and the
+        support around you.
+      </p>
+      <div class="ed-hero-buttons">
+        <a href="{% url 'contact' %}" class="btn btn-green"
+          >Start a conversation</a
+        >
+        <a href="{% url 'contact' %}" class="btn btn-outline-dark"
+          >Ask Dr. Adakings</a
+        >
+      </div>
+    </div>
+    <div class="ed-hero-right">
+      <img
+        src="{% static 'assests/image/donations.jpg' %}"
+        alt="Donation process"
+        class="ed-hero-image"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOUR CLEAR STAGES ===== -->
+<section class="ed-process">
+  <div class="ed-process-container">
+    <p class="section-tag">The Process</p>
+    <h2 class="ed-process-heading">Four clear stages</h2>
+    <div class="ed-stages-grid">
+      <div class="ed-stage-card reveal">
+        <span class="ed-stage-num">01</span>
+        <h3>Apply &amp; screen</h3>
+        <p>Health history, bloodwork, ultrasound and counselling.</p>
+      </div>
+      <div class="ed-stage-card reveal reveal-delay-1">
+        <span class="ed-stage-num">02</span>
+        <h3>Match</h3>
+        <p>Recipients are matched with a verified donor profile.</p>
+      </div>
+      <div class="ed-stage-card reveal reveal-delay-2">
+        <span class="ed-stage-num">03</span>
+        <h3>Stimulate</h3>
+        <p>10–12 days of monitored hormone injections.</p>
+      </div>
+      <div class="ed-stage-card reveal reveal-delay-3">
+        <span class="ed-stage-num">04</span>
+        <h3>Retrieve</h3>
+        <p>A 15–20 minute sedated procedure, home the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ELIGIBILITY + FAQ ===== -->
+<section class="ed-split">
+  <div class="ed-split-container">
+    <div class="ed-eligibility">
+      <p class="section-tag">Donor Eligibility</p>
+      <h2 class="section-heading">Could you be a donor?</h2>
+      <ul class="ed-eligibility-list">
+        <li>
+          <i class="fa-regular fa-circle-check"></i> Aged 21–32 with regular
+          menstrual cycles
+        </li>
+        <li>
+          <i class="fa-regular fa-circle-check"></i> Non-smoker with a healthy
+          BMI range
+        </li>
+        <li>
+          <i class="fa-regular fa-circle-check"></i> No untreated hereditary
+          conditions in close family
+        </li>
+        <li>
+          <i class="fa-regular fa-circle-check"></i> Able to attend monitoring
+          visits over two weeks
+        </li>
+      </ul>
+      <a href="{% url 'contact' %}" class="btn btn-green">Apply as a donor</a>
+    </div>
+    <div class="ed-faq">
+      <p class="section-tag">Questions</p>
+      <h2 class="section-heading">Honest answers</h2>
+      <div class="ed-accordion">
+        <div class="ed-accordion-item">
+          <button class="ed-accordion-btn" aria-expanded="false">
+            <span>Does donating reduce my own fertility?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="ed-accordion-body">
+            <p>
+              No. You are born with millions of eggs. The donation process
+              retrieves eggs that would otherwise be lost in that cycle — it
+              does not deplete your reserve.
+            </p>
+          </div>
+        </div>
+        <div class="ed-accordion-item">
+          <button class="ed-accordion-btn" aria-expanded="false">
+            <span>Is the retrieval painful?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="ed-accordion-body">
+            <p>
+              The procedure is done under sedation so you feel nothing during
+              it. Mild cramping and bloating for 1–2 days afterwards is normal
+              and passes quickly.
+            </p>
+          </div>
+        </div>
+        <div class="ed-accordion-item">
+          <button class="ed-accordion-btn" aria-expanded="false">
+            <span>Am I anonymous?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="ed-accordion-body">
+            <p>
+              Anonymity policies vary by country and clinic. Our coordinators
+              walk you through the options and legal framework in your location
+              before you commit.
+            </p>
+          </div>
+        </div>
+        <div class="ed-accordion-item">
+          <button class="ed-accordion-btn" aria-expanded="false">
+            <span>How long does the whole process take?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="ed-accordion-body">
+            <p>
+              From initial application to retrieval is typically 6–10 weeks.
+              Screening and matching take the most time; the stimulation and
+              retrieval phase is under two weeks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block extra_js %}
+<script>
+  document.querySelectorAll(".ed-accordion-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains("open");
+      document
+        .querySelectorAll(".ed-accordion-item")
+        .forEach((i) => i.classList.remove("open"));
+      document
+        .querySelectorAll(".ed-accordion-btn")
+        .forEach((b) => b.setAttribute("aria-expanded", "false"));
+      if (!isOpen) {
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+</script>
+{% endblock %}

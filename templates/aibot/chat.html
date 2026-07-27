@@ -1,0 +1,260 @@
+{% extends "home/base.html" %} {% load static %} {% block title %}Dr. Adakings –
+AI Fertility Guide{% endblock %} {% block content %}
+<section class="ai-bot-section">
+  <div class="ai-bot-container">
+    <!-- Sidebar with chat history -->
+    <div class="ai-sidebar">
+      <div class="ai-sidebar-header">
+        <h2>Chat History</h2>
+        <button id="newChatBtn" class="ai-new-chat-btn">
+          <i class="fa-solid fa-plus"></i> New Chat
+        </button>
+      </div>
+      <div class="ai-sessions-list">
+        {% for sess in all_sessions %}
+        <a
+          href="{% url 'chat' %}?session={{ sess.session_id }}"
+          class="ai-session-item {% if session and session.session_id == sess.session_id %}active{% endif %}"
+        >
+          <span class="ai-session-id">Chat {{ sess.session_id }}</span>
+          <span class="ai-session-date"
+            >{{ sess.updated_at|date:"j M Y" }}</span
+          >
+        </a>
+        {% empty %}
+        <p class="ai-no-sessions">No previous chats</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Main chat area -->
+    <div class="ai-chat-main">
+      <div class="ai-chat-header">
+        <div class="ai-bot-info">
+          <div class="ai-bot-avatar">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <div>
+            <h1>Dr. Adakings</h1>
+            <span class="ai-bot-status">AI fertility guide - online</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat messages -->
+      <div class="ai-messages" id="messagesContainer">
+        {% if session %} {% for message in messages %}
+        <div class="ai-message ai-message-{{ message.role }}">
+          <div class="ai-message-content">
+            {% if message.role == 'assistant' %}
+            <div class="ai-message-avatar">
+              <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            {% endif %}
+            <div class="ai-message-text">{{ message.content|linebreaks }}</div>
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <!-- Welcome state -->
+        <div class="ai-welcome">
+          <div class="ai-welcome-avatar">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <h2>Hello, I'm Dr. Adakings.</h2>
+          <p>
+            Ask me anything about fertility, cycles, IVF, donation or surrogacy.
+            Everything you share stays on this device.
+          </p>
+
+          <div class="ai-suggested-questions">
+            <button
+              class="ai-suggested-btn"
+              data-question="When am I most fertile in my cycle?"
+            >
+              When am I most fertile in my cycle?
+            </button>
+            <button
+              class="ai-suggested-btn"
+              data-question="How does egg donation work?"
+            >
+              How does egg donation work?
+            </button>
+            <button
+              class="ai-suggested-btn"
+              data-question="What are the early signs of pregnancy?"
+            >
+              What are the early signs of pregnancy?
+            </button>
+            <button
+              class="ai-suggested-btn"
+              data-question="How does IVF treatment work?"
+            >
+              How does IVF treatment work?
+            </button>
+            <button
+              class="ai-suggested-btn"
+              data-question="What lifestyle changes improve fertility?"
+            >
+              What lifestyle changes improve fertility?
+            </button>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Input area -->
+      <div class="ai-input-area">
+        <form id="chatForm" class="ai-chat-form">
+          <input
+            type="hidden"
+            name="session_id"
+            id="sessionId"
+            value="{% if session %}{{ session.session_id }}{% endif %}"
+          />
+          <textarea
+            id="messageInput"
+            class="ai-message-input"
+            placeholder="Ask about your fertility journey..."
+            rows="1"
+            required
+          ></textarea>
+          <button type="submit" class="ai-send-btn" id="sendBtn">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+        <p class="ai-disclaimer">
+          <i class="fa-solid fa-circle-info"></i>
+          Educational guidance only - always confirm with your clinician.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block extra_js %}
+<script>
+  const sessionId = document.getElementById("sessionId").value;
+  const messagesContainer = document.getElementById("messagesContainer");
+  const chatForm = document.getElementById("chatForm");
+  const messageInput = document.getElementById("messageInput");
+  const sendBtn = document.getElementById("sendBtn");
+  const newChatBtn = document.getElementById("newChatBtn");
+
+  // Auto-resize textarea
+  messageInput.addEventListener("input", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+  });
+
+  // Suggested questions
+  document.querySelectorAll(".ai-suggested-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      messageInput.value = btn.dataset.question;
+      chatForm.dispatchEvent(new Event("submit"));
+    });
+  });
+
+  // New chat
+  newChatBtn.addEventListener("click", async () => {
+    try {
+      const response = await fetch("/ai-bot/new/", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken":
+            document.querySelector("[name=csrfmiddlewaretoken]")?.value || "",
+        },
+      });
+      const data = await response.json();
+      if (data.redirect_url) {
+        window.location.href = data.redirect_url;
+      }
+    } catch (error) {
+      console.error("Error creating new chat:", error);
+    }
+  });
+
+  // Send message
+  chatForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const message = messageInput.value.trim();
+    if (!message) return;
+
+    if (!sessionId) {
+      alert("Please start a new chat first");
+      return;
+    }
+
+    // Add user message to UI
+    addMessageToUI("user", message);
+    messageInput.value = "";
+    messageInput.style.height = "auto";
+    sendBtn.disabled = true;
+
+    try {
+      const response = await fetch("/ai-bot/send/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken":
+            document.querySelector("[name=csrfmiddlewaretoken]")?.value || "",
+        },
+        body: JSON.stringify({
+          session_id: sessionId,
+          message: message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.response) {
+        addMessageToUI("assistant", data.response);
+      } else if (data.error) {
+        addMessageToUI(
+          "assistant",
+          "Sorry, there was an error. Please try again.",
+        );
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      addMessageToUI(
+        "assistant",
+        "Sorry, there was an error. Please try again.",
+      );
+    } finally {
+      sendBtn.disabled = false;
+    }
+  });
+
+  function addMessageToUI(role, content) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `ai-message ai-message-${role}`;
+
+    const contentDiv = document.createElement("div");
+    contentDiv.className = "ai-message-content";
+
+    if (role === "assistant") {
+      const avatar = document.createElement("div");
+      avatar.className = "ai-message-avatar";
+      avatar.innerHTML = '<i class="fa-solid fa-user-doctor"></i>';
+      contentDiv.appendChild(avatar);
+    }
+
+    const textDiv = document.createElement("div");
+    textDiv.className = "ai-message-text";
+    textDiv.innerHTML = content.replace(/\n/g, "<br>");
+
+    contentDiv.appendChild(textDiv);
+    messageDiv.appendChild(contentDiv);
+
+    // Remove welcome if exists
+    const welcome = messagesContainer.querySelector(".ai-welcome");
+    if (welcome) welcome.remove();
+
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Scroll to bottom on load
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+</script>
+{% endblock %}
