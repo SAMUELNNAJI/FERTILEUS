@@ -885,6 +885,7 @@ ul {
   font-size: 0.855rem;
   color: var(--text-muted);
   line-height: 1.65;
+  flex: 1;
 }
 
 /* ============================================================
@@ -2391,18 +2392,8 @@ ul {
   gap: 32px;
   margin-bottom: 48px;
 }
-.journal-link {
-  display: inline-block;
-  margin-top: 12px;
-  color: var(--green-dark);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.journal-link:hover {
-  color: var(--green-mid);
-}
+
+/* "Read article" link — first definition removed, see blog section below */
 
 /* ---- Load More ---- */
 .blog-load-more {
@@ -3657,21 +3648,24 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--green-mid);
-  margin-top: 14px;
+  margin-top: auto;
+  padding-top: 14px;
   transition:
     gap 0.2s ease,
     color 0.2s ease;
 }
 .journal-link::after {
   content: "→";
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
 }
 .journal-link:hover {
   color: var(--green-dark);
   gap: 8px;
+}
 }
 
 /* hidden card state for filter */
