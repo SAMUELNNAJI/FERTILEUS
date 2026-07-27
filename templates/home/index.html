@@ -254,63 +254,72 @@
       </a>
       {% empty %}
       <!-- Fallback when no posts exist in the database yet -->
-      <article class="journal-card">
-        <div class="journal-img-wrap">
-          <img
-            src="{% static 'assests/image/Fertility.jpg' %}"
-            alt="Understanding Your Fertile Window"
-            class="journal-img"
-          />
-        </div>
-        <div class="journal-body">
-          <p class="journal-meta">
-            <span class="journal-cat">Fertility</span> · 29 March 2026
-          </p>
-          <h3>Understanding Your Fertile Window</h3>
-          <p>
-            Six days a cycle really matter. Here is how to find yours using
-            simple tracking.
-          </p>
-        </div>
-      </article>
-      <article class="journal-card">
-        <div class="journal-img-wrap">
-          <img
-            src="{% static 'assests/image/pregnacy.jpg' %}"
-            alt="When Conception Takes Longer"
-            class="journal-img"
-          />
-        </div>
-        <div class="journal-body">
-          <p class="journal-meta">
-            <span class="journal-cat">Pregnancy</span> · 28 March 2026
-          </p>
-          <h3>When Conception Takes Longer Than Expected</h3>
-          <p>
-            Trying for months without a positive test is exhausting. Here is
-            what is actually happening.
-          </p>
-        </div>
-      </article>
-      <article class="journal-card">
-        <div class="journal-img-wrap">
-          <img
-            src="{% static 'assests/image/donations.jpg' %}"
-            alt="What Egg Donation Really Involves"
-            class="journal-img"
-          />
-        </div>
-        <div class="journal-body">
-          <p class="journal-meta">
-            <span class="journal-cat">Donation</span> · 26 March 2026
-          </p>
-          <h3>What Egg Donation Really Involves</h3>
-          <p>
-            From screening to retrieval, a clear and honest walkthrough of the
-            egg donation process.
-          </p>
-        </div>
-      </article>
+      <a href="{% url 'blog' %}" class="journal-card-link">
+        <article class="journal-card">
+          <div class="journal-img-wrap">
+            <img
+              src="{% static 'assests/image/Fertility.jpg' %}"
+              alt="Understanding Your Fertile Window"
+              class="journal-img"
+            />
+          </div>
+          <div class="journal-body">
+            <p class="journal-meta">
+              <span class="journal-cat">Fertility</span> · 29 March 2026
+            </p>
+            <h3>Understanding Your Fertile Window</h3>
+            <p>
+              Six days a cycle really matter. Here is how to find yours using
+              simple tracking.
+            </p>
+            <span class="journal-link">Read article</span>
+          </div>
+        </article>
+      </a>
+      <a href="{% url 'blog' %}" class="journal-card-link">
+        <article class="journal-card">
+          <div class="journal-img-wrap">
+            <img
+              src="{% static 'assests/image/pregnacy.jpg' %}"
+              alt="When Conception Takes Longer"
+              class="journal-img"
+            />
+          </div>
+          <div class="journal-body">
+            <p class="journal-meta">
+              <span class="journal-cat">Pregnancy</span> · 28 March 2026
+            </p>
+            <h3>When Conception Takes Longer Than Expected</h3>
+            <p>
+              Trying for months without a positive test is exhausting. Here is
+              what is actually happening.
+            </p>
+            <span class="journal-link">Read article</span>
+          </div>
+        </article>
+      </a>
+      <a href="{% url 'blog' %}" class="journal-card-link">
+        <article class="journal-card">
+          <div class="journal-img-wrap">
+            <img
+              src="{% static 'assests/image/donations.jpg' %}"
+              alt="What Egg Donation Really Involves"
+              class="journal-img"
+            />
+          </div>
+          <div class="journal-body">
+            <p class="journal-meta">
+              <span class="journal-cat">Donation</span> · 26 March 2026
+            </p>
+            <h3>What Egg Donation Really Involves</h3>
+            <p>
+              From screening to retrieval, a clear and honest walkthrough of the
+              egg donation process.
+            </p>
+            <span class="journal-link">Read article</span>
+          </div>
+        </article>
+      </a>
       {% endfor %}
     </div>
   </div>
