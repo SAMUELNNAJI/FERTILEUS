@@ -1,9 +1,7 @@
-{% extends "home/base.html" %}
-{% load static %}
-{% block title %}Permission denied – FertilEus Network{% endblock %}
-{% block meta_description %}You do not have permission to access this page.{% endblock %}
-{% block og_type %}website{% endblock %}
-{% block content %}
+{% extends "home/base.html" %} {% load static %} {% block title %}Permission
+denied – FertilEus Network{% endblock %} {% block meta_description %}You do not
+have permission to access this page.{% endblock %} {% block og_type %}website{%
+endblock %} {% block content %}
 
 <section class="error-page">
   <div class="error-container">
@@ -12,9 +10,7 @@
     </div>
     <h1 class="error-code">403</h1>
     <h2 class="error-heading">Permission denied</h2>
-    <p class="error-text">
-      You do not have permission to access this page.
-    </p>
+    <p class="error-text">You do not have permission to access this page.</p>
     <div class="error-actions">
       <a href="{% url 'home' %}" class="btn btn-green">Go back home</a>
       <a href="{% url 'contact' %}" class="btn btn-outline-dark">Contact us</a>
