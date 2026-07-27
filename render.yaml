@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: fertileus
+    runtime: python
+    buildCommand: bash build.sh
+    startCommand: gunicorn FertileUs.wsgi:application
+    plan: free
+
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true          # Render auto-generates a secure key
+
+      - key: DEBUG
+        value: "False"
+
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"       # Update with your custom domain if any
+
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+
+      # ── ImageKit CDN ──────────────────────────────────────────
+      - key: IMAGEKIT_PUBLIC_KEY
+        sync: false                  # Fill in Render dashboard — never commit secrets
+
+      - key: IMAGEKIT_PRIVATE_KEY
+        sync: false
+
+      - key: IMAGEKIT_URL_ENDPOINT
+        sync: false
+
+      # ── AI Provider ───────────────────────────────────────────
+      - key: GROQ_API_KEY
+        sync: false
+
+      - key: GEMINI_API_KEY
+        sync: false
+
+      # Keep OpenAI slot in case you re-activate it later
+      - key: OPENAI_API_KEY
+        sync: false
