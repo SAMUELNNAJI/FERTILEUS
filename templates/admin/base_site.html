@@ -1,0 +1,10 @@
+{% extends "admin/base_site.html" %}
+
+{% load static %}
+
+{% block branding %}
+<div style="display: flex; align-items: center; gap: 12px;">
+  <img src="{% static 'favicon.svg' %}" alt="FertilEus Network" style="width: 40px; height: 40px;">
+  <h1 id="site-name" style="margin: 0; font-size: 1.2rem;">{{ site_header|default:_('Django administration') }}</h1>
+</div>
+{% endblock %}

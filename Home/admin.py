@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Blog, Comment
 
+# Customize admin site
+admin.site.site_header = "FertilEus Network Administration"
+admin.site.site_title = "FertilEus Network"
+admin.site.index_title = "Welcome to FertilEus Network Admin"
+
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
