@@ -5029,20 +5029,50 @@ ul {
   margin: 7px 0 0;
 }
 
-/* --- Mobile --- */
-@media (max-width: 768px) {
-  .ai-bot-popup {
-    bottom: 85px;
-    right: 12px;
-    left: 12px;
-    width: auto;
-    height: calc(100dvh - 100px);
-  }
-  .ai-bot-float-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 54px;
-    height: 54px;
-    font-size: 1.3rem;
-  }
+/* ============================================================
+   ERROR PAGES (404 / 500 / 403)
+   ============================================================ */
+.error-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: var(--green-bg);
+  text-align: center;
+}
+.error-container {
+  max-width: 520px;
+}
+.error-icon {
+  font-size: 2.4rem;
+  color: var(--green-mid);
+  margin-bottom: 18px;
+}
+.error-code {
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 700;
+  color: var(--green-dark);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.error-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+.error-text {
+  font-size: 0.97rem;
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.error-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
 }

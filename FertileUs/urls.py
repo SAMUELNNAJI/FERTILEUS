@@ -20,5 +20,9 @@ urlpatterns = [
     path('ai-bot/', include('aibot.urls')),
 ]
 
+handler404 = 'Home.views.error_404'
+handler500 = 'Home.views.error_500'
+handler403 = 'Home.views.error_403'
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
