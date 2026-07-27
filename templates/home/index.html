@@ -1,8 +1,7 @@
-{% extends "home/base.html" %}
-{% load static %}
-{% block title %}FertilEus - Your Fertile Health Matters to Us{% endblock %}
-{% block meta_description %}Trusted fertility education, personalised guidance, and community support for people across Africa.{% endblock %}
-{% block content %}
+{% extends "home/base.html" %} {% load static %} {% block title %}FertilEus -
+Your Fertile Health Matters to Us{% endblock %} {% block meta_description
+%}Trusted fertility education, personalised guidance, and community support for
+people across Africa.{% endblock %} {% block content %}
 
 <!-- ===== HERO SECTION ===== -->
 <section class="hero">
@@ -221,6 +220,8 @@
         >All articles</a
       >
     </div>
+
+    <!-- Cards — looped from database only, no hardcoded fallbacks -->
     <div class="journal-grid">
       {% for post in posts %}
       <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
@@ -242,8 +243,8 @@
           </div>
           <div class="journal-body">
             <p class="journal-meta">
-              <span class="journal-cat">{{ post.blog_category }}</span> · {{
-              post.blog_date|date:"j F Y" }}
+              <span class="journal-cat">{{ post.blog_category }}</span>
+              · {{ post.blog_date|date:"j F Y" }}
             </p>
             <h3>{{ post.blog_title }}</h3>
             <p>{{ post.blog_content|truncatewords:20 }}</p>
@@ -252,73 +253,7 @@
         </article>
       </a>
       {% empty %}
-      <!-- Fallback when no posts exist in the database yet -->
-      <a href="{% url 'blog' %}" class="journal-card-link">
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <img
-              src="{% static 'assests/image/Fertility.jpg' %}"
-              alt="Understanding Your Fertile Window"
-              class="journal-img"
-            />
-          </div>
-          <div class="journal-body">
-            <p class="journal-meta">
-              <span class="journal-cat">Fertility</span> · 29 March 2026
-            </p>
-            <h3>Understanding Your Fertile Window</h3>
-            <p>
-              Six days a cycle really matter. Here is how to find yours using
-              simple tracking.
-            </p>
-            <span class="journal-link">Read article</span>
-          </div>
-        </article>
-      </a>
-      <a href="{% url 'blog' %}" class="journal-card-link">
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <img
-              src="{% static 'assests/image/pregnacy.jpg' %}"
-              alt="When Conception Takes Longer"
-              class="journal-img"
-            />
-          </div>
-          <div class="journal-body">
-            <p class="journal-meta">
-              <span class="journal-cat">Pregnancy</span> · 28 March 2026
-            </p>
-            <h3>When Conception Takes Longer Than Expected</h3>
-            <p>
-              Trying for months without a positive test is exhausting. Here is
-              what is actually happening.
-            </p>
-            <span class="journal-link">Read article</span>
-          </div>
-        </article>
-      </a>
-      <a href="{% url 'blog' %}" class="journal-card-link">
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <img
-              src="{% static 'assests/image/donations.jpg' %}"
-              alt="What Egg Donation Really Involves"
-              class="journal-img"
-            />
-          </div>
-          <div class="journal-body">
-            <p class="journal-meta">
-              <span class="journal-cat">Donation</span> · 26 March 2026
-            </p>
-            <h3>What Egg Donation Really Involves</h3>
-            <p>
-              From screening to retrieval, a clear and honest walkthrough of the
-              egg donation process.
-            </p>
-            <span class="journal-link">Read article</span>
-          </div>
-        </article>
-      </a>
+      <p class="journal-empty">No articles yet — check back soon.</p>
       {% endfor %}
     </div>
   </div>

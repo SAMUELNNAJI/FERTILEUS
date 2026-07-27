@@ -1,10 +1,7 @@
-{% extends "home/base.html" %}
-{% load static %}
-
-{% block title %}Journal - FertilEus Network{% endblock %}
-{% block meta_description %}Explore expert fertility insights, pregnancy information, and egg donation guidance from FertilEus.{% endblock %}
-
-{% block content %}
+{% extends "home/base.html" %} {% load static %} {% block title %}Journal -
+FertilEus Network{% endblock %} {% block meta_description %}Explore expert
+fertility insights, pregnancy information, and egg donation guidance from
+FertilEus.{% endblock %} {% block content %}
 
 <!-- ===== BLOG HERO ===== -->
 <section class="blog-hero">
@@ -53,7 +50,7 @@
       </button>
     </div>
 
-    <!-- Cards grid -->
+    <!-- Cards grid — looped from database only -->
     <div class="blog-grid" id="blogGrid">
       {% for post in posts %}
       <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
@@ -86,76 +83,9 @@
         </article>
       </a>
       {% empty %}
-      <!-- No posts in DB yet — show placeholder cards so the page looks complete -->
-      <a href="{% url 'blog' %}" class="journal-card-link">
-        <article class="journal-card" data-category="Fertility">
-          <div class="journal-img-wrap">
-            <img
-              src="{% static 'assests/image/Fertility.jpg' %}"
-              alt="Understanding Your Fertile Window"
-              class="journal-img"
-            />
-          </div>
-          <div class="journal-body">
-            <p class="journal-meta">
-              <span class="journal-cat">Fertility</span> · 29 March 2026 · 6 min read
-            </p>
-            <h3>Understanding Your Fertile Window</h3>
-            <p>
-              Six days a cycle really matter. Here is how to find yours using
-              cycle length, cervical mucus and simple tracking — no expensive
-              gadgets required.
-            </p>
-            <span class="journal-link">Read article</span>
-          </div>
-        </article>
-      </a>
-      <a href="{% url 'blog' %}" class="journal-card-link">
-        <article class="journal-card" data-category="Pregnancy">
-          <div class="journal-img-wrap">
-            <img
-              src="{% static 'assests/image/pregnacy.jpg' %}"
-              alt="When Conception Takes Longer Than Expected"
-              class="journal-img"
-            />
-          </div>
-          <div class="journal-body">
-            <p class="journal-meta">
-              <span class="journal-cat">Pregnancy</span> · 28 March 2026 · 7 min read
-            </p>
-            <h3>When Conception Takes Longer Than Expected</h3>
-            <p>
-              Trying for months without a positive test is exhausting. Here is
-              what is actually happening, what is normal, and the point at which
-              testing becomes worthwhile.
-            </p>
-            <span class="journal-link">Read article</span>
-          </div>
-        </article>
-      </a>
-      <a href="{% url 'blog' %}" class="journal-card-link">
-        <article class="journal-card" data-category="Donation">
-          <div class="journal-img-wrap">
-            <img
-              src="{% static 'assests/image/donations.jpg' %}"
-              alt="What Egg Donation Really Involves"
-              class="journal-img"
-            />
-          </div>
-          <div class="journal-body">
-            <p class="journal-meta">
-              <span class="journal-cat">Donation</span> · 26 March 2026 · 5 min read
-            </p>
-            <h3>What Egg Donation Really Involves</h3>
-            <p>
-              From screening to retrieval, a clear and honest walkthrough of the
-              egg donation process — including the questions donors are often too
-              shy to ask.
-            </p>
-            <span class="journal-link">Read article</span>
-          </div>
-        </article>
-      </a>
+      <div class="blog-empty-state">
+        <p>No articles published yet. Check back soon.</p>
+      </div>
       {% endfor %}
     </div>
   </div>
@@ -165,6 +95,7 @@
 <script>
   const filterBtns = document.querySelectorAll(".blog-filter-btn");
   const cards = document.querySelectorAll("#blogGrid .journal-card");
+
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       filterBtns.forEach((b) => b.classList.remove("active"));
