@@ -1,4 +1,4 @@
-from django.db import models
+﻿from django.db import models
 from django.utils.text import slugify
 
 
@@ -17,7 +17,7 @@ class Blog(models.Model):
     # Files land at: https://ik.imagekit.io/fertileus/blog/
     blog_image    = models.ImageField(upload_to='blog/', blank=True, null=True)
     blog_category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='Fertility')
-    blog_author   = models.CharField(max_length=100, default='Dr. Adakings')
+    blog_author   = models.CharField(max_length=100, default='Dr. Cee Fertility')
     blog_read_time = models.PositiveSmallIntegerField(default=5, help_text='Minutes to read')
     blog_date     = models.DateTimeField(auto_now_add=True)
     published     = models.BooleanField(default=True)

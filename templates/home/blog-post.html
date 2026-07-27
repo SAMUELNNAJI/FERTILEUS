@@ -1,11 +1,11 @@
 {% extends "home/base.html" %}
 {% load static %}
-{% block title %}{{ post.blog_title }} - FertilEus Network{% endblock %}
+{% block title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
 {% block meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
 {% block og_type %}article{% endblock %}
-{% block og_title %}{{ post.blog_title }} - FertilEus Network{% endblock %}
+{% block og_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
 {% block og_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block twitter_title %}{{ post.blog_title }} - FertilEus Network{% endblock %}
+{% block twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
 {% block twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
 {% block extra_head %}
 {% if post.blog_image %}
@@ -19,7 +19,7 @@
   "headline": "{{ post.blog_title|escapejs }}",
   "datePublished": "{{ post.blog_date|date:'c' }}",
   "author": {"@type": "Person", "name": "{{ post.blog_author|escapejs }}"},
-  "publisher": {"@type": "Organization", "name": "FertilEus Network"},
+  "publisher": {"@type": "Organization", "name": "FertileUs Network"},
   "mainEntityOfPage": "{{ site_url }}{{ request.path }}"{% if post.blog_image %},
   "image": "{{ post.blog_image.url }}"{% endif %}
 }

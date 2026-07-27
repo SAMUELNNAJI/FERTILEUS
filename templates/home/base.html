@@ -1,25 +1,25 @@
-{% load static %}
+﻿{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}" />
-    <title>{% block title %}FertilEus Network{% endblock %}</title>
+    <title>{% block title %}FertileUs Network{% endblock %}</title>
     <meta
       name="description"
-      content="{% block meta_description %}FertilEus Network provides trusted fertility education, support, and guidance for people across Africa.{% endblock %}"
+      content="{% block meta_description %}FertileUs Network provides trusted fertility education, support, and guidance for people across Africa.{% endblock %}"
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="{{ site_url }}{{ request.path }}" />
-    <meta property="og:site_name" content="FertilEus Network" />
+    <meta property="og:site_name" content="FertileUs Network" />
     <meta
       property="og:type"
       content="{% block og_type %}website{% endblock %}"
     />
     <meta
       property="og:title"
-      content="{% block og_title %}{% block og_title_default %}FertilEus Network{% endblock %}{% endblock %}"
+      content="{% block og_title %}{% block og_title_default %}FertileUs Network{% endblock %}{% endblock %}"
     />
     <meta
       property="og:description"
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="{% block twitter_title %}FertilEus Network{% endblock %}"
+      content="{% block twitter_title %}FertileUs Network{% endblock %}"
     />
     <meta
       name="twitter:description"
@@ -59,7 +59,7 @@
               />
             </svg>
           </span>
-          <span class="logo-text">FertilEus</span>
+          <span class="logo-text">FertileUs</span>
         </a>
         <ul class="nav-links">
           <li>
@@ -158,7 +158,7 @@
     <button
       id="aiBotFloatBtn"
       class="ai-bot-float-btn"
-      title="Chat with Dr. Adakings"
+      title="Chat with Dr. Cee Fertility"
     >
       <i class="fa-solid fa-user-doctor"></i>
     </button>
@@ -171,7 +171,7 @@
           <i class="fa-solid fa-user-doctor"></i>
         </div>
         <div class="ai-bot-popup-info">
-          <h3>Dr. Adakings</h3>
+          <h3>Dr. Cee Fertility</h3>
           <span class="ai-bot-popup-status"
             >AI fertility guide &middot; online</span
           >
@@ -209,7 +209,7 @@
       <!-- Messages -->
       <div class="ai-bot-popup-messages" id="aiBotMessages">
         <div class="ai-bot-welcome">
-          <h2>Hello, I'm Dr. Adakings</h2>
+          <h2>Hello, I'm Dr. Cee Fertility</h2>
           <p>
             Ask me anything about fertility, cycles, IVF,<br />
             donation or surrogacy. Everything you share<br />
@@ -276,7 +276,7 @@
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-col footer-brand">
-          <p class="footer-brand-name">FertilEus Network</p>
+          <p class="footer-brand-name">FertileUs Network</p>
           <p class="footer-brand-desc">
             A community-driven fertility ecosystem built for Africa — education,
             verified clinics, donor matching and surrogacy guidance, all in one
@@ -303,13 +303,13 @@
           <h4>Support</h4>
           <ul>
             <li><a href="{% url 'blog' %}">Fertility journal</a></li>
-            <li><a href="#" data-open-ai-bot>Chat with Dr. Adakings</a></li>
+            <li><a href="#" data-open-ai-bot>Chat with Dr. Cee Fertility</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 FertilEus Network. All rights reserved.</p>
+        <p>© 2026 FertileUs Network. All rights reserved.</p>
         <p class="footer-disclaimer">
           Information here is educational and never a substitute for medical
           advice.
@@ -448,7 +448,7 @@
       function showWelcome() {
         aiBotMessages.innerHTML = `
           <div class="ai-bot-welcome">
-            <h2>Hello, I'm Dr. Adakings</h2>
+            <h2>Hello, I'm Dr. Cee Fertility</h2>
             <p>Ask me anything about fertility, cycles, IVF,<br>
                donation or surrogacy. Everything you share<br>
                stays on this device.</p>

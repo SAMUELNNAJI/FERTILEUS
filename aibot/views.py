@@ -1,4 +1,4 @@
-import uuid
+﻿import uuid
 import json
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
@@ -9,7 +9,7 @@ from decouple import config
 
 
 # System prompt to restrict AI to fertility topics only
-SYSTEM_PROMPT = """You are Dr. Adakings, an AI fertility guide for FertilEus Network. You ONLY answer questions related to:
+SYSTEM_PROMPT = """You are Dr. Cee Fertility, an AI fertility guide for FertileUs Network. You ONLY answer questions related to:
 - Fertility and reproductive health
 - Menstrual cycles and ovulation
 - IVF and assisted reproductive technologies
@@ -84,7 +84,7 @@ def new_chat(request):
     Message.objects.create(
         session=session,
         role='assistant',
-        content="Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device."
+        content="Hello, I'm Dr. Cee Fertility. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device."
     )
 
     return JsonResponse({
@@ -107,7 +107,7 @@ def send_message(request):
         Message.objects.create(
             session=session,
             role='assistant',
-            content="Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device."
+            content="Hello, I'm Dr. Cee Fertility. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device."
         )
     else:
         session = get_object_or_404(ChatSession, session_id=session_id)
