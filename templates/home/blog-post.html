@@ -1,12 +1,15 @@
-{% extends "home/base.html" %} {% load static %} {% block title %}{{
-post.blog_title }} – FertilEus Network{% endblock %} {% block meta_description
-%}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
-og_type %}article{% endblock %} {% block og_title %}{{ post.blog_title }} –
-FertilEus Network{% endblock %} {% block og_description %}{{
-post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
-twitter_title %}{{ post.blog_title }} – FertilEus Network{% endblock %} {% block
-twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{%
-endblock %} {% block extra_head %} {% if post.blog_image %}
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}{{ post.blog_title }} - FertilEus Network{% endblock %}
+{% block meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.blog_title }} - FertilEus Network{% endblock %}
+{% block og_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block twitter_title %}{{ post.blog_title }} - FertilEus Network{% endblock %}
+{% block twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+
+{% block extra_head %} {% if post.blog_image %}
 <meta property="og:image" content="{{ post.blog_image.url }}" />
 <meta name="twitter:image" content="{{ post.blog_image.url }}" />
 {% endif %}
