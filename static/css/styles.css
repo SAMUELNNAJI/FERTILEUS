@@ -5035,14 +5035,12 @@ ul {
 @media (max-width: 480px) {
   .ai-bot-float-btn {
     bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 16px;
   }
 
   .ai-bot-popup {
     bottom: 90px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 16px;
     width: calc(100vw - 32px);
     max-width: 360px;
     height: min(520px, calc(100dvh - 110px));
@@ -5099,18 +5097,14 @@ ul {
 
 /* ===== AI BOT MOBILE RESPONSIVE ===== */
 @media (max-width: 480px) {
-  /* Center the floating button on small screens */
   .ai-bot-float-btn {
     bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 16px;
   }
 
-  /* Center the popup and make it full-width with padding */
   .ai-bot-popup {
     bottom: 90px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 16px;
     width: calc(100vw - 32px);
     max-width: 360px;
     height: min(520px, calc(100dvh - 110px));
