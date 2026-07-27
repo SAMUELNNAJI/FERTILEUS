@@ -3,25 +3,25 @@ services:
     name: fertileus
     runtime: python
     buildCommand: bash build.sh
-    startCommand: gunicorn FertileUs.wsgi:application
+    startCommand: gunicorn FertileUs.wsgi:application --workers 2 --threads 2 --timeout 120
     plan: free
 
     envVars:
       - key: SECRET_KEY
-        generateValue: true          # Render auto-generates a secure key
+        generateValue: true # Render auto-generates a secure key
 
       - key: DEBUG
         value: "False"
 
       - key: ALLOWED_HOSTS
-        value: ".onrender.com"       # Update with your custom domain if any
+        value: ".onrender.com" # Update with your custom domain if any
 
       - key: PYTHON_VERSION
         value: "3.11.0"
 
       # ── ImageKit CDN ──────────────────────────────────────────
       - key: IMAGEKIT_PUBLIC_KEY
-        sync: false                  # Fill in Render dashboard — never commit secrets
+        sync: false # Fill in Render dashboard — never commit secrets
 
       - key: IMAGEKIT_PRIVATE_KEY
         sync: false
