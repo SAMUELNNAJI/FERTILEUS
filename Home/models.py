@@ -41,6 +41,7 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     blog      = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    parent    = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies')
     name      = models.CharField(max_length=80, blank=True, default='Anonymous')
     body      = models.TextField(max_length=1200)
     created   = models.DateTimeField(auto_now_add=True)
@@ -50,7 +51,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name        = 'Comment'
         verbose_name_plural = 'Comments'
-        ordering            = ['-created']
+        ordering            = ['created']
 
     def __str__(self):
         display_name = self.name if self.name else 'Anonymous'

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Blog, Comment
 from .forms import CommentForm
+from django.contrib import messages
 
 
 def error_404(request, exception=None):
@@ -46,7 +47,7 @@ def blog(request):
 
 def blog_post(request, slug):
     post     = get_object_or_404(Blog, blog_slug=slug, published=True)
-    comments = post.comments.filter(approved=True)
+    comments = post.comments.filter(approved=True, parent=None)
 
     # Related posts: same category, exclude current, max 3
     related_posts = (
@@ -62,7 +63,12 @@ def blog_post(request, slug):
             comment.blog = post
             if not comment.name:
                 comment.name = 'Anonymous'
+            # Handle reply parent
+            parent_id = request.POST.get('parent_id')
+            if parent_id:
+                comment.parent = get_object_or_404(Comment, id=parent_id)
             comment.save()
+            messages.success(request, 'Your comment has been posted successfully.')
             return redirect('blog_post', slug=slug)
     else:
         form = CommentForm()
@@ -73,6 +79,38 @@ def blog_post(request, slug):
         'related_posts': related_posts,
         'form':          form,
     })
+
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    slug = comment.blog.blog_slug
+    comment.delete()
+    messages.success(request, 'Your comment has been deleted successfully.')
+    return redirect('blog_post', slug=slug)
+
+
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    slug = comment.blog.blog_slug
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your comment has been edited successfully.')
+            return redirect('blog_post', slug=slug)
+        else:
+            messages.error(request, 'Error editing your comment.')
+            return redirect('blog_post', slug=slug)
+    
+    return redirect('blog_post', slug=slug)
+
+
+def like_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.likes += 1
+    comment.save()
+    return JsonResponse({'likes': comment.likes})
 
 
 def contact(request):
