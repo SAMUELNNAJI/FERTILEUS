@@ -1159,6 +1159,10 @@ ul {
 
   .journal-grid {
     grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .journal-header {
@@ -4208,6 +4212,7 @@ ul {
 /* Journal card link wrapper — makes the whole card clickable */
 .journal-card-link {
   display: block;
+  width: 100%;
 }
 
 /* ===== AI BOT CHAT ===== */
