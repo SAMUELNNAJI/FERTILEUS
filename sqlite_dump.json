@@ -1,0 +1,642 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$VKXrYxQPV5nIJq73Qm3ahd$HbOE+9VVd3PjIRPEziLZ3/zyZIiC4aGbwfa0C+b4sIs=",
+    "last_login": "2026-07-26T18:07:31.178Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "fertileus@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-26T18:06:53.076Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "x2jmcywfia5y4e6oafea637awy0m993q",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0PACoUevfsGsrssUjWQlPZk_Ltp0oNeZybzhojbWuLWZYlzggkMnH4ZIT-l7iI9sN6b4lbXZSa1J-qwXd1aktf1aP8GBXuBCYjCgCMFMex90lkkWyT2dszBDNY745ATu3RBa7Q-6yDZesyMYbAsCJ8vDDY49w:1wo3G7:Bx1aPrBPyJuIJDKon9tdL-o0jaNC6pb2NBQBv3ufv1E",
+    "expire_date": "2026-08-09T18:07:31.192Z"
+  }
+},
+{
+  "model": "Home.blog",
+  "pk": 1,
+  "fields": {
+    "blog_title": "Understanding Your Fertile Window",
+    "blog_slug": "understanding-your-fertile-window",
+    "blog_content": "Most people are surprised to learn that conception is only possible during a short stretch of each cycle. Sperm can survive for up to five days in fertile cervical mucus, while an egg is viable for roughly twelve to twenty-four hours after release. Put together, that gives you a window of about six days each month.\r\n\r\nFinding that window starts with knowing your cycle length. Count from the first day of full bleeding to the day before your next period begins. Do this for three cycles and you will see a pattern, even if it varies by a day or two. Ovulation usually happens twelve to sixteen days before the next period starts ù not on day fourteen, which is only true for a textbook twenty-eight day cycle.\r\n\r\nYour body also gives direct signals. As oestrogen rises, cervical mucus becomes clear, slippery and stretchy, similar to raw egg white. That change is one of the most reliable low-cost indicators that your fertile days have arrived. A slight rise in waking temperature confirms afterwards that ovulation already happened, which makes basal body temperature useful for confirming a pattern rather than for timing intercourse in the moment.\r\n\r\nTiming intercourse every one to two days across the fertile window works better than trying to hit a single perfect day. It removes pressure, keeps sperm present when the egg arrives, and it is far kinder to a relationship than a rigid schedule.\r\n\r\nIf your cycles are shorter than twenty-one days, longer than thirty-five days, or wildly unpredictable, tracking alone will not solve it. That pattern is worth a conversation with a fertility clinician, because conditions such as polycystic ovary syndrome or thyroid imbalance are common and very treatable.",
+    "blog_image": "https://ik.imagekit.io/Samizil/fertileus/Fertility_2NP6Dllsg.jpg",
+    "blog_category": "Fertility",
+    "blog_author": "Dr. Adakings",
+    "blog_read_time": 5,
+    "blog_date": "2026-07-26T18:37:18.263Z",
+    "published": true
+  }
+},
+{
+  "model": "Home.blog",
+  "pk": 2,
+  "fields": {
+    "blog_title": "When Conception Takes Longer Than Expected",
+    "blog_slug": "when-conception-takes-longer-than-expected",
+    "blog_content": "Conception depends on a long chain of events lining up in the same cycle: an egg maturing and releasing, sperm arriving in good numbers and moving well, open fallopian tubes, successful fertilisation, and a receptive uterine lining. A break anywhere along that chain means no pregnancy that month, even when nothing is medically wrong.\r\n\r\nFor couples in their twenties and early thirties, roughly one in four cycles ends in pregnancy. That means most people conceive within a year of regular trying, and a good number take six months or more. A few months of negative tests is disappointing, but it is not evidence of a problem.\r\n\r\nThe usual guidance is to seek an evaluation after twelve months of trying if you are under thirty-five, and after six months if you are thirty-five or older. Do not wait that long if you already know about irregular or absent periods, previous pelvic infection or surgery, endometriosis, two or more miscarriages, or a known issue with a partner's semen analysis.\r\n\r\nMale factor contributes to about half of all cases, yet it is often investigated last. A semen analysis is quick, inexpensive and non-invasive, so it should be one of the first tests rather than an afterthought.\r\n\r\nThe emotional weight of this waiting period is real, and it is often carried in silence because of stigma. Talk to someone: a counsellor, a support group, or our care team. Sharing the load does not shorten the journey, but it does make it survivable.",
+    "blog_image": "https://ik.imagekit.io/Samizil/fertileus/clinic-BCJnXJDO_8sWgkQlEo.jpg",
+    "blog_category": "Pregnancy",
+    "blog_author": "Dr. Adakings",
+    "blog_read_time": 5,
+    "blog_date": "2026-07-26T18:38:17.215Z",
+    "published": true
+  }
+},
+{
+  "model": "Home.blog",
+  "pk": 3,
+  "fields": {
+    "blog_title": "What Egg Donation Really Involves",
+    "blog_slug": "what-egg-donation-really-involves",
+    "blog_content": "Egg donation begins with screening rather than needles. Donors complete a health and family history questionnaire, a physical examination, hormone and infectious-disease bloodwork, and an ultrasound to count resting follicles. Counselling is part of this stage too, so that the decision is made with full information and no pressure.\r\n\r\nOnce cleared, a donor takes hormone injections for roughly ten to twelve days so that several follicles mature at once instead of the usual single egg. Clinic visits every few days track progress by ultrasound and bloodwork, and the dose is adjusted to keep stimulation gentle and safe.\r\n\r\nRetrieval itself is a short procedure under sedation, typically fifteen to twenty minutes. A fine needle guided by ultrasound collects fluid from each follicle. Most donors rest for a few hours and return to normal activity within a day or two, with mild bloating or cramping being the most common after-effect.\r\n\r\nDonating does not use up your future fertility. The eggs collected come from the group your body was going to release or reabsorb during that cycle anyway. Serious complications such as significant ovarian hyperstimulation are uncommon in well-monitored programmes.\r\n\r\nEvery FertilEus donor is matched only with clinics we have verified, and legal expectations around anonymity, compensation and consent are documented before any medication begins.",
+    "blog_image": "https://ik.imagekit.io/Samizil/fertileus/donations_kSgswq1h7.jpg",
+    "blog_category": "Donation",
+    "blog_author": "Dr. Adakings",
+    "blog_read_time": 5,
+    "blog_date": "2026-07-26T18:39:12.696Z",
+    "published": true
+  }
+},
+{
+  "model": "Home.comment",
+  "pk": 1,
+  "fields": {
+    "blog": 2,
+    "name": "Samuel Nnaji",
+    "body": "wow nice content",
+    "created": "2026-07-26T19:03:29.246Z",
+    "approved": true,
+    "likes": 0
+  }
+},
+{
+  "model": "Home.comment",
+  "pk": 2,
+  "fields": {
+    "blog": 2,
+    "name": "Sami Zil",
+    "body": "great to know",
+    "created": "2026-07-26T20:23:53.821Z",
+    "approved": true,
+    "likes": 0
+  }
+},
+{
+  "model": "Home.comment",
+  "pk": 3,
+  "fields": {
+    "blog": 2,
+    "name": "Biradu Foundation",
+    "body": "@Sami Zil HMM IS THAT SO",
+    "created": "2026-07-26T22:05:21.552Z",
+    "approved": true,
+    "likes": 0
+  }
+},
+{
+  "model": "Home.comment",
+  "pk": 4,
+  "fields": {
+    "blog": 2,
+    "name": "Trending News",
+    "body": "@Sami Zil that good",
+    "created": "2026-07-27T05:36:38.555Z",
+    "approved": true,
+    "likes": 0
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 1,
+  "fields": {
+    "session_id": "3e3a90e5",
+    "created_at": "2026-07-26T21:30:13.475Z",
+    "updated_at": "2026-07-26T21:30:13.479Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 2,
+  "fields": {
+    "session_id": "8e445171",
+    "created_at": "2026-07-26T22:35:55.969Z",
+    "updated_at": "2026-07-26T22:35:55.970Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 3,
+  "fields": {
+    "session_id": "36e877d9",
+    "created_at": "2026-07-26T22:36:18.759Z",
+    "updated_at": "2026-07-26T22:36:18.759Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 4,
+  "fields": {
+    "session_id": "f0f262ab",
+    "created_at": "2026-07-26T22:36:28.230Z",
+    "updated_at": "2026-07-26T22:36:28.230Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 6,
+  "fields": {
+    "session_id": "bea95e01",
+    "created_at": "2026-07-27T06:36:00.067Z",
+    "updated_at": "2026-07-27T06:36:00.067Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 7,
+  "fields": {
+    "session_id": "6bc7323e",
+    "created_at": "2026-07-27T06:49:54.460Z",
+    "updated_at": "2026-07-27T06:49:54.460Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 8,
+  "fields": {
+    "session_id": "e906b559",
+    "created_at": "2026-07-27T06:50:35.321Z",
+    "updated_at": "2026-07-27T06:50:35.321Z"
+  }
+},
+{
+  "model": "aibot.chatsession",
+  "pk": 9,
+  "fields": {
+    "session_id": "527522db",
+    "created_at": "2026-07-27T06:50:52.851Z",
+    "updated_at": "2026-07-27T06:50:52.852Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 1,
+  "fields": {
+    "session": 1,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-26T21:30:13.535Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 2,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-26T21:30:13.576Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 3,
+  "fields": {
+    "session": 1,
+    "role": "assistant",
+    "content": "That's an important fertility topic. For the most accurate guidance tailored to your situation, please speak with a healthcare provider who can review your medical history.",
+    "created_at": "2026-07-26T21:30:25.564Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 4,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "HOW LONG DOES OVULATION LAST",
+    "created_at": "2026-07-26T21:30:59.028Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 5,
+  "fields": {
+    "session": 1,
+    "role": "assistant",
+    "content": "Fertility is complex and individual. I can share general information, but your clinician can give you personalized recommendations based on your specific circumstances.",
+    "created_at": "2026-07-26T21:31:09.024Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 6,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "When am I most fertile in my cycle?",
+    "created_at": "2026-07-26T21:50:09.125Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 7,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "HELLO",
+    "created_at": "2026-07-26T21:50:45.369Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 8,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-26T21:59:52.974Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 9,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-26T22:04:21.317Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 10,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-26T22:15:44.182Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 11,
+  "fields": {
+    "session": 1,
+    "role": "user",
+    "content": "What lifestyle changes improve fertility?",
+    "created_at": "2026-07-26T22:25:02.793Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 12,
+  "fields": {
+    "session": 2,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-26T22:35:55.991Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 13,
+  "fields": {
+    "session": 2,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-26T22:35:59.922Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 14,
+  "fields": {
+    "session": 3,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-26T22:36:18.771Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 15,
+  "fields": {
+    "session": 4,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-26T22:36:28.239Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 16,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "When am I most fertile in my cycle?",
+    "created_at": "2026-07-27T05:42:36.642Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 17,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-27T05:53:21.892Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 18,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "hi",
+    "created_at": "2026-07-27T05:55:42.699Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 19,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "When am I most fertile in my cycle?",
+    "created_at": "2026-07-27T05:56:25.508Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 20,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "When am I most fertile in my cycle?",
+    "created_at": "2026-07-27T06:06:10.288Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 21,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "When am I most fertile in my cycle?",
+    "created_at": "2026-07-27T06:12:30.896Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 22,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-27T06:15:51.360Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 23,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-27T06:20:44.057Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 25,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "When am I most fertile in my cycle?",
+    "created_at": "2026-07-27T06:31:03.626Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 26,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "hi",
+    "created_at": "2026-07-27T06:32:59.910Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 27,
+  "fields": {
+    "session": 4,
+    "role": "assistant",
+    "content": "Unfortunately, I'm a fertility guide, not a general chat assistant. I'd love to help you with fertility-related questions. If you're looking for information on a specific topic, feel free to ask, and I'll do my best to assist you.\n\nWould you like to know about your most fertile time in the cycle or something else related to fertility?",
+    "created_at": "2026-07-27T06:33:30.745Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 28,
+  "fields": {
+    "session": 4,
+    "role": "user",
+    "content": "how many days is pregnancy before due date",
+    "created_at": "2026-07-27T06:34:19.485Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 29,
+  "fields": {
+    "session": 6,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-27T06:36:00.192Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 30,
+  "fields": {
+    "session": 6,
+    "role": "user",
+    "content": "How does egg donation work?",
+    "created_at": "2026-07-27T06:46:45.675Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 31,
+  "fields": {
+    "session": 6,
+    "role": "assistant",
+    "content": "Egg donation, also known as oocyte donation, is a process where a woman donates her eggs to help another individual or couple conceive. Here's a general overview:\n\n**The Process:**\n\n1. **Egg Donor Selection:** A fertility clinic or agency matches an egg donor with a recipient based on factors like age, education, physical characteristics, and medical history.\n2. **Donor Screening:** The egg donor undergoes medical and psychological evaluations, as well as genetic testing, to ensure she's healthy and suitable for donation.\n3. **Stimulation and Retrieval:** The egg donor takes medications to stimulate her ovaries, producing multiple eggs. She then undergoes a minor surgical procedure to retrieve the eggs.\n4. **Egg Retrieval:** The eggs are collected through a transvaginal ultrasound-guided procedure, usually under sedation or light anesthesia.\n5. **Recipient Preparation:** The recipient prepares her body for embryo transfer by taking medications to thicken her uterine lining.\n\n**Types of Egg Donation:**\n\n1. **Known Donation:** The recipient knows the egg donor, often a friend or family member.\n2. **Anonymous Donation:** The recipient doesn't know the egg donor.\n3. **Directed Donation:** The egg donor is known to the recipient, but their identities are kept confidential.\n\n**Considerations:**\n\n* Egg donation is a complex process, and the recipient should discuss the risks and benefits with a fertility specialist.\n* The recipient may need to use a gestational carrier (surrogate) if they don't have a uterus or have other reproductive issues.\n* Egg donation can be emotionally challenging for both the donor and recipient.\n\n**Next Steps:**\n\nIf you're considering egg donation, discuss your options with a fertility specialist or a reproductive endocrinologist. They can help you understand the process, risks, and benefits.\n\n**Reminder:** This is educational information, not personalized medical advice. If you have specific questions or concerns, please consult a qualified healthcare professional.",
+    "created_at": "2026-07-27T06:46:54.882Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 32,
+  "fields": {
+    "session": 6,
+    "role": "user",
+    "content": "how long does it take to give birth through cs",
+    "created_at": "2026-07-27T06:47:34.827Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 33,
+  "fields": {
+    "session": 6,
+    "role": "assistant",
+    "content": "A C-section (cesarean section) is a surgical delivery where the baby is born through incisions in the abdomen and uterus. The length of a C-section can vary depending on several factors, such as the complexity of the surgery, the experience of the surgeon, and the overall health of the mother and baby.\n\n**Typical C-Section Timeline:**\n\n1. **Preparation:** 1-2 hours before the scheduled C-section, the mother will be taken to the operating room and prepared for surgery.\n2. **Surgery:** The C-section typically takes around 30-60 minutes to perform, depending on the complexity of the procedure.\n3. **Recovery:** After the surgery, the mother will be taken to the recovery room, where she will be monitored for 1-2 hours to ensure she's stable and recovering well.\n4. **Post-Delivery Recovery:** The mother will typically spend 2-4 hours in the hospital recovering from the C-section, during which time she'll be monitored and receive pain medication as needed.\n\n**Total Time:**\n\nThe total time from preparation to discharge can range from 4-6 hours, depending on the individual circumstances.\n\n**Factors Affecting C-Section Time:**\n\n* **Emergency C-Section:** If the C-section is performed due to an emergency, such as fetal distress or a sudden change in the mother's condition, the surgery may be more complex and take longer to perform.\n* **Multiple Births:** Delivering twins or other multiples can increase the complexity of the surgery and prolong the overall time.\n* **Previous C-Sections:** Women who have had previous C-sections may have a shorter surgery time due to familiarity with the procedure and the surgeon.\n\n**Reminder:** This is general information, and the actual time for a C-section can vary depending on individual circumstances. If you have specific questions or concerns, please consult a qualified healthcare professional.",
+    "created_at": "2026-07-27T06:47:41.787Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 34,
+  "fields": {
+    "session": 6,
+    "role": "user",
+    "content": "how long is it okay for a woman to being to have sex after birth",
+    "created_at": "2026-07-27T06:48:18.747Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 35,
+  "fields": {
+    "session": 6,
+    "role": "assistant",
+    "content": "The timing for resuming sex after childbirth is a personal decision that depends on several factors, including the type of delivery, any complications during delivery, and individual healing needs. Here's a general guideline:\n\n**General Recommendations:**\n\n1. **Vaginal Delivery:** Women who deliver vaginally can usually resume sex 4-6 weeks after giving birth. This allows time for the cervix, vagina, and perineum to heal.\n2. **C-Section:** Women who deliver via C-section may need to wait longer, typically 6-8 weeks, before resuming sex. This allows the incision site to heal and reduces the risk of complications.\n3. **Episiotomy or Perineal Repair:** Women who have undergone an episiotomy or perineal repair may need to wait longer, typically 8-12 weeks, before resuming sex.\n\n**Factors to Consider:**\n\n* **Pain and Discomfort:** Women may experience pain, discomfort, or bleeding during sex after childbirth. It's essential to wait until these symptoms have subsided.\n* **Healing and Scarring:** The vagina, cervix, and perineum need time to heal and form new scar tissue.\n* **Hormonal Changes:** Postpartum hormonal fluctuations can affect libido and vaginal lubrication.\n* **Emotional and Physical Readiness:** Women should feel emotionally and physically ready to resume sex, which may take time.\n\n**Tips for Resuming Sex:**\n\n* **Communicate with Your Partner:** Discuss your feelings, concerns, and readiness with your partner.\n* **Use Lubrication:** Vaginal lubricants can help reduce discomfort and pain during sex.\n* **Start Slow:** Begin with gentle, gentle sex and gradually increase intensity and frequency.\n* **Prioritize Comfort:** Prioritize your comfort and well-being during sex.\n\n**Reminder:** Every woman's healing process is unique, and it's essential to listen to your body and prioritize your physical and emotional well-being. If you have concerns or questions, consult your healthcare provider for personalized guidance.",
+    "created_at": "2026-07-27T06:48:25.493Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 36,
+  "fields": {
+    "session": 7,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-27T06:49:54.478Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 37,
+  "fields": {
+    "session": 7,
+    "role": "user",
+    "content": "How does IVF treatment work?",
+    "created_at": "2026-07-27T06:49:58.849Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 38,
+  "fields": {
+    "session": 7,
+    "role": "assistant",
+    "content": "IVF (In Vitro Fertilization) is a type of assisted reproductive technology (ART) used to help individuals or couples conceive a child. Here's a simplified overview of the IVF process:\n\n**Step 1: Ovulation Induction and Egg Retrieval**\n\n* Medications are given to stimulate the ovaries to produce multiple eggs.\n* Eggs are retrieved from the ovaries through a minor surgical procedure under sedation.\n* The eggs are then examined for maturity and quality.\n\n**Step 2: Sperm Collection and Preparation**\n\n* A semen sample is collected from the male partner.\n* Sperm are washed and prepared for fertilization.\n\n**Step 3: Fertilization**\n\n* Eggs are mixed with sperm in a laboratory dish.\n* Fertilization occurs when a sperm penetrates the egg's outer layer.\n* The resulting embryos develop over the next few days.\n\n**Step 4: Embryo Transfer**\n\n* One or more embryos are transferred into the woman's uterus using a catheter.\n* The embryos implant in the uterine lining, and a pregnancy develops.\n\n**Step 5: Pregnancy Testing and Follow-up**\n\n* Pregnancy is confirmed through blood tests and ultrasound.\n* Regular follow-up appointments with the fertility clinic monitor the pregnancy's progress.\n\nKeep in mind that IVF treatment may vary depending on individual circumstances, and not all IVF cycles are successful. If you're considering IVF, it's essential to discuss your specific situation and options with a fertility specialist.\n\nTo help me provide more tailored information, can you tell me if you're considering IVF due to infertility, egg or sperm quality issues, or other factors?",
+    "created_at": "2026-07-27T06:50:09.212Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 39,
+  "fields": {
+    "session": 8,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-27T06:50:35.333Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 40,
+  "fields": {
+    "session": 8,
+    "role": "user",
+    "content": "What are the early signs of pregnancy?",
+    "created_at": "2026-07-27T06:50:39.321Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 41,
+  "fields": {
+    "session": 8,
+    "role": "assistant",
+    "content": "Early signs of pregnancy can vary from woman to woman, but here are some common ones:\n\n**Physical Symptoms:**\n\n* Missed period (most common sign)\n* Nausea and vomiting (morning sickness)\n* Fatigue (extreme tiredness)\n* Breast tenderness\n* Frequent urination\n* Bloating and cramping\n\n**Emotional and Behavioral Changes:**\n\n* Mood swings\n* Increased sensitivity to smells and tastes\n* Food cravings or aversions\n* Increased emotional sensitivity\n\n**Other Signs:**\n\n* Light bleeding or spotting during implantation (6-12 days after conception)\n* Increased cervical mucus (thick, white, and cloudy)\n* Increased basal body temperature (BBT)\n\n**Important Reminder:** These symptoms can also be caused by other factors, such as hormonal changes, stress, or underlying medical conditions. If you suspect you're pregnant, it's essential to take a home pregnancy test (HPT) and consult a healthcare provider for confirmation.\n\n**Next Steps:**\n\n1. Take a home pregnancy test (HPT) to confirm pregnancy.\n2. Schedule an appointment with your healthcare provider for a prenatal checkup.\n3. Discuss your medical history, lifestyle, and any concerns with your provider.\n\n**When to Seek Prompt Medical Care:**\n\n* If you experience heavy bleeding, severe abdominal pain, or severe nausea and vomiting.\n* If you have a history of miscarriage, ectopic pregnancy, or other complications.\n* If you're unsure about your pregnancy or have concerns about your health.\n\nCan you tell me when your last menstrual period (LMP) was, or if you've already taken a pregnancy test?",
+    "created_at": "2026-07-27T06:50:45.258Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 42,
+  "fields": {
+    "session": 9,
+    "role": "assistant",
+    "content": "Hello, I'm Dr. Adakings. Ask me anything about fertility, cycles, IVF, donation or surrogacy. Everything you share stays on this device.",
+    "created_at": "2026-07-27T06:50:52.870Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 43,
+  "fields": {
+    "session": 9,
+    "role": "user",
+    "content": "When am I most fertile?",
+    "created_at": "2026-07-27T06:50:52.883Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 44,
+  "fields": {
+    "session": 9,
+    "role": "assistant",
+    "content": "You're most fertile during your ovulation period, which typically lasts 5-7 days. Here's a breakdown:\n\n- **Day 1-5**: Your body prepares for ovulation by releasing hormones that thicken the uterine lining and mature the egg.\n- **Day 6-7**: Ovulation occurs, releasing an egg from the ovary. This is usually the most fertile time, as sperm can fertilize the egg for up to 24 hours after release.\n- **Day 8-14**: If the egg isn't fertilized, it's released from the body during menstruation.\n\nKeep in mind that fertility can vary from person to person, and other factors like age, overall health, and lifestyle can impact fertility.\n\nTo determine your most fertile days, you can:\n- Track your menstrual cycle using a calendar or fertility app.\n- Monitor your basal body temperature (BBT) to detect a slight increase around ovulation.\n- Use ovulation predictor kits (OPKs) to detect luteinizing hormone (LH) surges, which indicate ovulation.\n\nWhat's your typical menstrual cycle length?",
+    "created_at": "2026-07-27T06:50:58.352Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 45,
+  "fields": {
+    "session": 6,
+    "role": "user",
+    "content": "What are the early signs of pregnancy?",
+    "created_at": "2026-07-27T06:52:23.611Z"
+  }
+},
+{
+  "model": "aibot.message",
+  "pk": 46,
+  "fields": {
+    "session": 6,
+    "role": "assistant",
+    "content": "The early signs of pregnancy can vary from woman to woman, but here are some common symptoms that may indicate pregnancy:\n\n**Physical Symptoms:**\n\n1. **Missed Period:** A missed period is often the first sign of pregnancy, but it's not always a reliable indicator, as many factors can cause irregular periods.\n2. **Nausea and Vomiting:** Morning sickness, which can occur at any time of day, is a classic symptom of early pregnancy.\n3. **Fatigue:** Feeling extremely tired or exhausted is a common symptom of early pregnancy.\n4. **Breast Changes:** Hormonal fluctuations can cause breast tenderness, swelling, or darkening of the nipples.\n5. **Frequent Urination:** As the uterus expands, it can put pressure on the bladder, leading to more frequent trips to the bathroom.\n6. **Food Cravings or Aversions:** Some women experience strong cravings or aversions to certain foods or smells.\n7. **Bloating and Cramping:** Mild cramping and bloating are common in early pregnancy.\n\n**Emotional Symptoms:**\n\n1. **Mood Swings:** Hormonal changes can cause mood swings, irritability, or emotional ups and downs.\n2. **Increased Emotional Sensitivity:** Women may feel more emotional or sensitive during early pregnancy.\n\n**Other Signs:**\n\n1. **Light Bleeding or Spotting:** Some women experience light bleeding or spotting during implantation (around 6-12 days after fertilization).\n2. **Increased Cervical Mucus:** Women may notice an increase in cervical mucus, which can appear cloudy, white, or off-white.\n3. **Sensitivity to Smells:** Some women may experience a heightened sense of smell during early pregnancy.\n\n**When to Take a Pregnancy Test:**\n\n1. **Wait until after a missed period:** If you've missed your period, wait a few days before taking a pregnancy test to ensure accuracy.\n2. **Choose a sensitive test:** Select a pregnancy test that's designed to detect lower levels of hCG (human chorionic gonadotropin).\n3. **Take the test in the morning:** hCG levels are typically highest in the morning, making it easier to detect pregnancy.\n\n**Reminder:** If you suspect you're pregnant, consult your healthcare provider for a confirmatory test and guidance on prenatal care.",
+    "created_at": "2026-07-27T06:52:28.781Z"
+  }
+}
+]
