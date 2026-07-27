@@ -4209,9 +4209,9 @@ ul {
   }
 }
 
-/* Journal card link wrapper — preserves card styling when wrapped in <a> */
+/* Journal card link wrapper — makes the whole card clickable */
 .journal-card-link {
-  display: contents;
+  display: block;
 }
 
 /* ===== AI BOT CHAT ===== */
