@@ -5029,6 +5029,24 @@ ul {
   margin: 7px 0 0;
 }
 
+/* ===== AI BOT MOBILE RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .ai-bot-float-btn {
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .ai-bot-popup {
+    bottom: 90px;
+    right: 50%;
+    transform: translateX(50%);
+    width: calc(100vw - 32px);
+    max-width: 360px;
+    height: min(520px, calc(100dvh - 110px));
+  }
+}
+
 /* ============================================================
    ERROR PAGES (404 / 500 / 403)
    ============================================================ */
@@ -5075,4 +5093,24 @@ ul {
   gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* ===== AI BOT MOBILE RESPONSIVE ===== */
+@media (max-width: 480px) {
+  /* Center the floating button on small screens */
+  .ai-bot-float-btn {
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  /* Center the popup and make it full-width with padding */
+  .ai-bot-popup {
+    bottom: 90px;
+    right: 50%;
+    transform: translateX(50%);
+    width: calc(100vw - 32px);
+    max-width: 360px;
+    height: min(520px, calc(100dvh - 110px));
+  }
 }
