@@ -1241,6 +1241,7 @@ ul {
   padding: 0 32px 48px;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: translateX(-100%);
   transition:
     opacity 0.35s ease,
@@ -1251,6 +1252,7 @@ ul {
 .mob-nav.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateX(0);
 }
 
