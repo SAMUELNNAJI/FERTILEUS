@@ -8,20 +8,26 @@ services:
 
     envVars:
       - key: SECRET_KEY
-        generateValue: true # Render auto-generates a secure key
+        generateValue: true
 
       - key: DEBUG
         value: "False"
 
       - key: ALLOWED_HOSTS
-        value: ".onrender.com" # Update with your custom domain if any
+        value: ".onrender.com"
 
       - key: PYTHON_VERSION
         value: "3.11.0"
 
+      # ── Postgres — auto-linked from the database below ────────
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fertileus-db
+          property: connectionString
+
       # ── ImageKit CDN ──────────────────────────────────────────
       - key: IMAGEKIT_PUBLIC_KEY
-        sync: false # Fill in Render dashboard — never commit secrets
+        sync: false
 
       - key: IMAGEKIT_PRIVATE_KEY
         sync: false
@@ -36,6 +42,11 @@ services:
       - key: GEMINI_API_KEY
         sync: false
 
-      # Keep OpenAI slot in case you re-activate it later
       - key: OPENAI_API_KEY
         sync: false
+
+databases:
+  - name: fertileus-db
+    plan: free
+    databaseName: fertileus
+    user: fertileus
