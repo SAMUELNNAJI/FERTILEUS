@@ -1,5 +1,7 @@
 {% extends "home/base.html" %} {% load static %} {% block title %}Journal –
-FertilEus Network{% endblock %} {% block meta_description %}Explore expert fertility insights, pregnancy information, and egg donation guidance from FertilEus.{% endblock %} {% block content %}
+FertilEus Network{% endblock %} {% block meta_description %}Explore expert
+fertility insights, pregnancy information, and egg donation guidance from
+FertilEus.{% endblock %} {% block content %}
 
 <!-- ===== BLOG HERO ===== -->
 <section class="blog-hero">
@@ -51,35 +53,35 @@ FertilEus Network{% endblock %} {% block meta_description %}Explore expert ferti
     <!-- Cards grid -->
     <div class="blog-grid" id="blogGrid">
       {% for post in posts %}
-      <article class="journal-card" data-category="{{ post.blog_category }}">
-        <div class="journal-img-wrap">
-          {% if post.blog_image %}
-          <img
-            src="{{ post.blog_image.url }}"
-            alt="{{ post.blog_title }}"
-            class="journal-img"
-          />
-          {% else %}
-          <img
-            src="{% static 'assests/image/Fertility.jpg' %}"
-            alt="{{ post.blog_title }}"
-            class="journal-img"
-          />
-          {% endif %}
-        </div>
-        <div class="journal-body">
-          <p class="journal-meta">
-            <span class="journal-cat">{{ post.blog_category }}</span>
-            · {{ post.blog_date|date:"j F Y" }} · {{ post.blog_read_time }} min
-            read
-          </p>
-          <h3>{{ post.blog_title }}</h3>
-          <p>{{ post.blog_content|truncatewords:28 }}</p>
-          <a href="{% url 'blog_post' post.blog_slug %}" class="journal-link"
-            >Read article</a
-          >
-        </div>
-      </article>
+      <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
+        <article class="journal-card" data-category="{{ post.blog_category }}">
+          <div class="journal-img-wrap">
+            {% if post.blog_image %}
+            <img
+              src="{{ post.blog_image.url }}"
+              alt="{{ post.blog_title }}"
+              class="journal-img"
+            />
+            {% else %}
+            <img
+              src="{% static 'assests/image/Fertility.jpg' %}"
+              alt="{{ post.blog_title }}"
+              class="journal-img"
+            />
+            {% endif %}
+          </div>
+          <div class="journal-body">
+            <p class="journal-meta">
+              <span class="journal-cat">{{ post.blog_category }}</span>
+              · {{ post.blog_date|date:"j F Y" }} · {{ post.blog_read_time }}
+              min read
+            </p>
+            <h3>{{ post.blog_title }}</h3>
+            <p>{{ post.blog_content|truncatewords:28 }}</p>
+            <span class="journal-link">Read article</span>
+          </div>
+        </article>
+      </a>
       {% empty %}
       <!-- No posts in DB yet — show placeholder cards so the page looks complete -->
       <article class="journal-card" data-category="Fertility">
