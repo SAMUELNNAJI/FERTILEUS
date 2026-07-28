@@ -35,7 +35,7 @@ urlpatterns = [
     # IndexNow key verification file — must be accessible at /<key>.txt
     path(f'{settings.INDEXNOW_KEY}.txt', indexnow_key_view, name='indexnow_key'),
     # Serve favicon.ico so browsers don't get a 404
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon.svg'), permanent=True)),
+    path('favicon.ico', RedirectView.as_view(url='/static/favicon.svg', permanent=True)),
     path('admin/', admin.site.urls),
     path('', include('Home.urls')),
     path('ai-bot/', include('aibot.urls')),

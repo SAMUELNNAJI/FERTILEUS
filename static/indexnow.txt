@@ -1,0 +1,3 @@
+# Replace this with your actual IndexNow key
+# Your IndexNow key should be a single line with no spaces or special characters
+# Get your key from: https://www.indexnow.org/
