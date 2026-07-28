@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Blog, Comment
+from .indexing import index_blog_post
 
 # Customize admin site
 admin.site.site_header = "FertilEus Network Administration"
@@ -16,6 +17,12 @@ class BlogAdmin(admin.ModelAdmin):
     list_editable = ('published',)
     date_hierarchy = 'blog_date'
     ordering = ('-blog_date',)
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        # Index the blog post if it's published
+        if obj.published:
+            index_blog_post(obj)
 
 
 @admin.register(Comment)
