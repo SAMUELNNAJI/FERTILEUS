@@ -1,5 +1,8 @@
 ﻿from django.db import models
+from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+
+User = get_user_model()
 
 
 CATEGORY_CHOICES = [
@@ -43,6 +46,7 @@ class Comment(models.Model):
     blog      = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     parent    = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies')
     name      = models.CharField(max_length=80, blank=True, default='Anonymous')
+    user      = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='comments')
     body      = models.TextField(max_length=1200)
     created   = models.DateTimeField(auto_now_add=True)
     approved  = models.BooleanField(default=True)

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Blog, Comment
 from .forms import CommentForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 def error_404(request, exception=None):
@@ -39,15 +40,26 @@ def blog(request):
     posts = Blog.objects.filter(published=True)
     if category != 'all':
         posts = posts.filter(blog_category=category)
+    
+    paginator = Paginator(posts, 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     return render(request, 'home/blog.html', {
-        'posts': posts,
+        'posts': page_obj,
         'active_category': category,
+        'paginator': paginator,
     })
 
 
 def blog_post(request, slug):
     post     = get_object_or_404(Blog, blog_slug=slug, published=True)
     comments = post.comments.filter(approved=True, parent=None)
+    
+    # Paginate comments
+    paginator = Paginator(comments, 20)
+    page_number = request.GET.get('page')
+    comments_page = paginator.get_page(page_number)
 
     # Related posts: same category, exclude current, max 3
     related_posts = (
@@ -63,6 +75,7 @@ def blog_post(request, slug):
             comment.blog = post
             if not comment.name:
                 comment.name = 'Anonymous'
+            comment.user = request.user if request.user.is_authenticated else None
             # Handle reply parent
             parent_id = request.POST.get('parent_id')
             if parent_id:
@@ -75,14 +88,18 @@ def blog_post(request, slug):
 
     return render(request, 'home/blog-post.html', {
         'post':          post,
-        'comments':      comments,
+        'comments':      comments_page,
         'related_posts': related_posts,
         'form':          form,
+        'paginator':     paginator,
     })
 
 
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
+    if not request.user.is_authenticated or comment.user != request.user:
+        messages.error(request, 'You do not have permission to delete this comment.')
+        return redirect('blog_post', slug=comment.blog.blog_slug)
     slug = comment.blog.blog_slug
     comment.delete()
     messages.success(request, 'Your comment has been deleted successfully.')
@@ -91,6 +108,9 @@ def delete_comment(request, comment_id):
 
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
+    if not request.user.is_authenticated or comment.user != request.user:
+        messages.error(request, 'You do not have permission to edit this comment.')
+        return redirect('blog_post', slug=comment.blog.blog_slug)
     slug = comment.blog.blog_slug
     
     if request.method == 'POST':

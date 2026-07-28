@@ -232,6 +232,7 @@
               <span>Reply</span>
             </button>
 
+            {% if request.user.is_authenticated and comment.user == request.user %}
             <button
               class="disc-action-btn"
               data-action="edit"
@@ -241,9 +242,9 @@
               <i class="fa-regular fa-pen-to-square"></i>
               <span>Edit</span>
             </button>
-            
+
             <!-- DELETE COMMENT LOGIC -->
-            <form action="{% url 'delete_comment' comment.id %}" method="POST">
+            <form action="{% url 'delete_comment' comment.id %}" method="POST" style="display:inline;">
               {% csrf_token %}
               <button
                 class="disc-action-btn"
@@ -253,7 +254,8 @@
                 <i class="fa-regular fa-trash-can"></i>
                 <span>Delete</span>
               </button>
-              </form>
+            </form>
+            {% endif %}
             
           </div>
           
@@ -301,6 +303,31 @@
         </div>
         {% endif %}
       </div>
+      
+      <!-- Comments Pagination -->
+      {% if paginator.num_pages > 1 %}
+      <div class="pagination">
+        {% if comments.has_previous %}
+        <a href="?page={{ comments.previous_page_number }}" class="pagination-link">
+          <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        {% endif %}
+        
+        {% for num in paginator.page_range %}
+        {% if comments.number == num %}
+        <span class="pagination-link active">{{ num }}</span>
+        {% elif num > comments.number|add:'-3' and num < comments.number|add:'3' %}
+        <a href="?page={{ num }}" class="pagination-link">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+        
+        {% if comments.has_next %}
+        <a href="?page={{ comments.next_page_number }}" class="pagination-link">
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        {% endif %}
+      </div>
+      {% endif %}
     </div>
     <!-- /discussion-section -->
   </div>

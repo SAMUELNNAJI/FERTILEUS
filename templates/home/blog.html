@@ -88,6 +88,31 @@ FertileUs.{% endblock %} {% block content %}
       </div>
       {% endfor %}
     </div>
+    
+    <!-- Pagination -->
+    {% if paginator.num_pages > 1 %}
+    <div class="pagination">
+      {% if posts.has_previous %}
+      <a href="?page={{ posts.previous_page_number }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}" class="pagination-link">
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+      {% endif %}
+      
+      {% for num in paginator.page_range %}
+      {% if posts.number == num %}
+      <span class="pagination-link active">{{ num }}</span>
+      {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+      <a href="?page={{ num }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}" class="pagination-link">{{ num }}</a>
+      {% endif %}
+      {% endfor %}
+      
+      {% if posts.has_next %}
+      <a href="?page={{ posts.next_page_number }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}" class="pagination-link">
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
   </div>
 </section>
 

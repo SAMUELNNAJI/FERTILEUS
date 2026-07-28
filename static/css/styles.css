@@ -4125,6 +4125,7 @@ ul {
 .disc-comment-actions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 /* Nested Replies */
@@ -4416,6 +4417,45 @@ ul {
   to {
     width: 0%;
   }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 16px 0;
+}
+
+.pagination-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pagination-link:hover {
+  border-color: var(--green-mid);
+  color: var(--green-mid);
+  background: #eaf4ee;
+}
+
+.pagination-link.active {
+  background: var(--green-mid);
+  color: var(--white);
+  border-color: var(--green-mid);
 }
 
 /* Responsive */
