@@ -1,7 +1,6 @@
 ﻿from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
-from .image_optimizer import optimize_image
 
 User = get_user_model()
 
@@ -37,16 +36,6 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         if not self.blog_slug:
             self.blog_slug = slugify(self.blog_title)
-        
-        # Optimize image before saving
-        if self.blog_image:
-            self.blog_image = optimize_image(
-                self.blog_image,
-                max_width=1920,
-                max_height=1080,
-                quality=85
-            )
-        
         super().save(*args, **kwargs)
 
     def approved_comments(self):

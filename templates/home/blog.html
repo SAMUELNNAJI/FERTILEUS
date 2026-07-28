@@ -1,9 +1,7 @@
-{% extends "home/base.html" %}
-{% load static %}
-{% load image_tags %}
-{% block title %}Journal - FertileUs Network{% endblock %}
-{% block meta_description %}Explore expert fertility insights, pregnancy information, and egg donation guidance from FertileUs.{% endblock %}
-{% block content %}
+{% extends "home/base.html" %} {% load static %} {% block title %}Journal -
+FertileUs Network{% endblock %} {% block meta_description %}Explore expert
+fertility insights, pregnancy information, and egg donation guidance from
+FertileUs.{% endblock %} {% block content %}
 
 <!-- ===== BLOG HERO ===== -->
 <section class="blog-hero">
@@ -58,16 +56,17 @@
       <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
         <article class="journal-card" data-category="{{ post.blog_category }}">
           <div class="journal-img-wrap">
-            {% if post.blog_image %} {% responsive_img post.blog_image.url
-            post.blog_title "journal-img" width="400" height="200" %} {% else %}
+            {% if post.blog_image %}
+            <img
+              src="{{ post.blog_image.url }}"
+              alt="{{ post.blog_title }}"
+              class="journal-img"
+            />
+            {% else %}
             <img
               src="{% static 'assests/image/Fertility.jpg' %}"
               alt="{{ post.blog_title }}"
               class="journal-img"
-              loading="lazy"
-              decoding="async"
-              width="400"
-              height="200"
             />
             {% endif %}
           </div>

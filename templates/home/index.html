@@ -1,9 +1,5 @@
 ﻿{% extends "home/base.html" %}
 {% load static %}
-{% load image_tags %}
-{% block extra_head %}
-<meta name="msvalidate.01" content="5B6F3094AAD05D5E9C2E95763B3D7EF" />
-{% endblock %}
 {% block title %}FertileUs - Your Fertile Health Matters to Us{% endblock %}
 {% block meta_description %}Trusted fertility education, personalised guidance, and community support for people across Africa.{% endblock %}
 {% block content %}
@@ -50,9 +46,6 @@
           class="hero-img"
           loading="eager"
           fetchpriority="high"
-          decoding="async"
-          width="480"
-          height="500"
         />
         <div class="hero-badge">
           <span class="badge-number">92%</span>
@@ -87,10 +80,6 @@
         src="{% static 'assests/image/about.jpg' %}"
         alt="Fertility consultation at clinic"
         class="about-img"
-        loading="lazy"
-        decoding="async"
-        width="550"
-        height="420"
       />
     </div>
     <div class="about-right">
@@ -210,10 +199,6 @@
           src="{% static 'assests/image/fertility education.jpg' %}"
           alt="Fertility education – lab technician at microscope"
           class="options-img"
-          loading="lazy"
-          decoding="async"
-          width="550"
-          height="420"
         />
         <div class="options-expert-badge">
           <p class="expert-label">Expert Care</p>
@@ -245,16 +230,17 @@
       <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
         <article class="journal-card">
           <div class="journal-img-wrap">
-            {% if post.blog_image %} {% responsive_img post.blog_image.url
-            post.blog_title "journal-img" width="400" height="200" %} {% else %}
+            {% if post.blog_image %}
+            <img
+              src="{{ post.blog_image.url }}"
+              alt="{{ post.blog_title }}"
+              class="journal-img"
+            />
+            {% else %}
             <img
               src="{% static 'assests/image/Fertility.jpg' %}"
               alt="{{ post.blog_title }}"
               class="journal-img"
-              loading="lazy"
-              decoding="async"
-              width="400"
-              height="200"
             />
             {% endif %}
           </div>

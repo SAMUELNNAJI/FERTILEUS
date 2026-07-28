@@ -1,14 +1,12 @@
-{% extends "home/base.html" %}
-{% load static %}
-{% load image_tags %}
-{% block title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
-{% block meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block og_type %}article{% endblock %}
-{% block og_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
-{% block og_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
-{% block twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block extra_head %} {% if post.blog_image %}
+{% extends "home/base.html" %} {% load static %} {% block title %}{{
+post.blog_title }} - FertileUs Network{% endblock %} {% block meta_description
+%}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
+og_type %}article{% endblock %} {% block og_title %}{{ post.blog_title }} -
+FertileUs Network{% endblock %} {% block og_description %}{{
+post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
+twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %} {% block
+twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{%
+endblock %} {% block extra_head %} {% if post.blog_image %}
 <meta property="og:image" content="{{ post.blog_image.url }}" />
 <meta name="twitter:image" content="{{ post.blog_image.url }}" />
 {% endif %}
@@ -98,15 +96,16 @@
 <article class="blog-post-article">
   <div class="blog-post-inner">
     <div class="blog-post-featured-img">
-      {% if post.blog_image %} {% picture_tag post.blog_image.url
-      post.blog_title sizes="(max-width: 768px) 100vw, 740px" %} {% else %}
+      {% if post.blog_image %}
+      <img
+        src="{{ post.blog_image.url }}"
+        alt="{{ post.blog_title }}"
+        onerror="this.src='{% static 'assests/image/Fertility.jpg' %}'"
+      />
+      {% else %}
       <img
         src="{% static 'assests/image/Fertility.jpg' %}"
         alt="{{ post.blog_title }}"
-        loading="eager"
-        decoding="async"
-        width="740"
-        height="400"
       />
       {% endif %}
     </div>
@@ -138,8 +137,7 @@
         >
           {% if rp.blog_image %}
           <div class="blog-post-related-img">
-            {% responsive_img rp.blog_image.url rp.blog_title width="350"
-            height="140" %}
+            <img src="{{ rp.blog_image.url }}" alt="{{ rp.blog_title }}" />
           </div>
           {% endif %}
           <div class="blog-post-related-body">

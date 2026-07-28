@@ -11,6 +11,7 @@
       content="{% block meta_description %}FertileUs Network provides trusted fertility education, support, and guidance for people across Africa.{% endblock %}"
     />
     <meta name="robots" content="index, follow" />
+    <meta name="msvalidate.01" content="5B6F3094AAD05D5E9C2E95763B3D37EF" />
     <link rel="canonical" href="{{ site_url }}{{ request.path }}" />
     <meta property="og:site_name" content="FertileUs Network" />
     <meta
@@ -303,7 +304,9 @@
           <h4>Support</h4>
           <ul>
             <li><a href="{% url 'blog' %}">Fertility journal</a></li>
-            <li><a href="#" data-open-ai-bot>Chat with Dr. Cee Fertility</a></li>
+            <li>
+              <a href="#" data-open-ai-bot>Chat with Dr. Cee Fertility</a>
+            </li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
           </ul>
         </div>
