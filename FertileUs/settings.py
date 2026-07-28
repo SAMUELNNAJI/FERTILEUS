@@ -17,7 +17,7 @@ os.environ['IMAGEKIT_URL_ENDPOINT'] = config('IMAGEKIT_URL_ENDPOINT')
 SECRET_KEY    = config('SECRET_KEY')
 DEBUG         = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
-SITE_URL      = config('SITE_URL', default='https://fertileus.org').rstrip('/')
+SITE_URL      = config('SITE_URL', default='https://fertileus.com.ng').rstrip('/')
 
 # ── Installed apps ─────────────────────────────────────────────────────────────
 INSTALLED_APPS = [

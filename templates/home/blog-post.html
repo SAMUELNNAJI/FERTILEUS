@@ -1,12 +1,14 @@
-{% extends "home/base.html" %} {% load static %} {% block title %}{{
-post.blog_title }} - FertileUs Network{% endblock %} {% block meta_description
-%}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
-og_type %}article{% endblock %} {% block og_title %}{{ post.blog_title }} -
-FertileUs Network{% endblock %} {% block og_description %}{{
-post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
-twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %} {% block
-twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{%
-endblock %} {% block extra_head %} {% if post.blog_image %}
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
+{% block meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
+{% block og_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
+{% block twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
+{% block extra_head %}
+{% if post.blog_image %}
 <meta property="og:image" content="{{ post.blog_image.url }}" />
 <meta name="twitter:image" content="{{ post.blog_image.url }}" />
 {% endif %}
@@ -174,8 +176,8 @@ endblock %} {% block extra_head %} {% if post.blog_image %}
       <!-- Comment form -->
       <div class="discussion-form-wrap">
         <form class="discussion-form" id="commentForm" method="POST" action="">
-          {% csrf_token %} {{ form.name }} {{ form.body }} {% if
-          form.body.errors %}
+          {% csrf_token %} {{ form.name }} {{ form.body }}
+          {% if form.body.errors %}
           <p class="disc-form-error">{{ form.body.errors|join:", " }}</p>
           {% endif %}
           <div class="disc-form-footer">
@@ -234,8 +236,7 @@ endblock %} {% block extra_head %} {% if post.blog_image %}
               <span>Reply</span>
             </button>
 
-            {% if request.user.is_authenticated and comment.user == request.user
-            %}
+            {% if request.user.is_authenticated and comment.user == request.user %}
             <button
               class="disc-action-btn"
               data-action="edit"
@@ -344,11 +345,11 @@ endblock %} {% block extra_head %} {% if post.blog_image %}
         >
           <i class="fa-solid fa-chevron-left"></i>
         </a>
-        {% endif %} {% for num in paginator.page_range %} {% if comments.number
-        == num %}
+        {% endif %}
+        {% for num in paginator.page_range %}
+        {% if comments.number == num %}
         <span class="pagination-link active">{{ num }}</span>
-        {% elif num > comments.number|add:'-3' and num < comments.number|add:'3'
-        %}
+        {% elif num > comments.number|add:'-3' and num < comments.number|add:'3' %}
         <a href="?page={{ num }}" class="pagination-link">{{ num }}</a>
         {% endif %} {% endfor %} {% if comments.has_next %}
         <a href="?page={{ comments.next_page_number }}" class="pagination-link">
