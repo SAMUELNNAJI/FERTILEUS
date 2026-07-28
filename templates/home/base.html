@@ -56,24 +56,8 @@
       />
     </noscript>
 
-    <!-- Critical CSS inlined for instant above-the-fold render -->
-    <style>
-      {% include 'home/partials/critical_css.html' %}
-    </style>
-
-    <!-- Main stylesheet — loaded async, non-blocking -->
-    <link
-      rel="preload"
-      href="{% static 'css/styles.css' %}"
-      as="style"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
-    />
-    <noscript
-      ><link rel="stylesheet" href="{% static 'css/styles.css' %}"
-    /></noscript>
+    <!-- Stylesheet — loaded synchronously so styles are ready before first paint -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
     <!-- Defer Font Awesome (non-critical) -->
     <link
