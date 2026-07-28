@@ -154,8 +154,10 @@ ul {
    NAVBAR
    ============================================================ */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -300,7 +302,7 @@ ul {
     #f4f9f5 70%,
     #ffffff 100%
   );
-  padding: 80px 24px 60px;
+  padding: 120px 24px 60px;
   overflow: hidden;
 }
 
@@ -1630,6 +1632,17 @@ ul {
   animation: fadeUp 0.6s ease 0.48s both;
 }
 
+/* ---- Blog hero animations ---- */
+.blog-pill-tag {
+  animation: fadeUp 0.6s ease 0.15s both;
+}
+.blog-hero-heading {
+  animation: fadeUp 0.6s ease 0.25s both;
+}
+.blog-hero-sub {
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
 /* ---- Service & value card entrance stagger ---- */
 .services-grid .service-card:nth-child(1),
 .ab-values-grid .ab-value-card:nth-child(1),
@@ -1757,7 +1770,7 @@ ul {
     #f4f9f5 65%,
     #ffffff 100%
   );
-  padding: 100px 24px 90px;
+  padding: 120px 24px 90px;
   text-align: center;
 }
 .ab-hero-inner {
@@ -2056,7 +2069,7 @@ ul {
     #f4f9f5 70%,
     #ffffff 100%
   );
-  padding: 80px 24px 90px;
+  padding: 120px 24px 90px;
 }
 
 .ed-hero-container {
@@ -2331,7 +2344,7 @@ ul {
 /* ---- Hero Section ---- */
 .blog-hero {
   background: linear-gradient(135deg, #f8f9f7 0%, #e8ebe7 100%);
-  padding: 100px 24px 80px;
+  padding: 140px 24px 80px;
   text-align: center;
 }
 .blog-hero-inner {
@@ -2457,7 +2470,7 @@ ul {
 /* ---- Hero Section ---- */
 .blog-post-hero {
   background: linear-gradient(135deg, #f8f9f7 0%, #e8ebe7 100%);
-  padding: 80px 24px 60px;
+  padding: 130px 24px 60px;
   text-align: center;
 }
 .blog-post-hero-inner {
@@ -2743,7 +2756,7 @@ ul {
     #f4f9f5 70%,
     #ffffff 100%
   );
-  padding: 80px 24px 60px;
+  padding: 120px 24px 60px;
   text-align: center;
 }
 .ct-hero-inner {
@@ -3132,7 +3145,7 @@ ul {
     #f4f9f5 70%,
     #ffffff 100%
   );
-  padding: 64px 24px 48px;
+  padding: 130px 24px 48px;
   text-align: center;
 }
 .calc-hero-inner {
@@ -3554,7 +3567,7 @@ ul {
     #f4f9f5 70%,
     #ffffff 100%
   );
-  padding: 72px 24px 56px;
+  padding: 140px 24px 56px;
   text-align: center;
 }
 .blog-hero-inner {
@@ -3707,7 +3720,7 @@ ul {
     #f4f9f5 70%,
     #ffffff 100%
   );
-  padding: 64px 24px 48px;
+  padding: 130px 24px 48px;
   text-align: center;
 }
 .blog-post-hero-inner {
