@@ -18,6 +18,7 @@ SECRET_KEY    = config('SECRET_KEY')
 DEBUG         = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 SITE_URL      = config('SITE_URL', default='https://fertileus.com.ng').rstrip('/')
+INDEXNOW_KEY  = config('INDEXNOW_KEY', default='')
 
 # ── Installed apps ─────────────────────────────────────────────────────────────
 INSTALLED_APPS = [

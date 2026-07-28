@@ -8,6 +8,13 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
 
+
+def indexnow_key_view(request):
+    """Serves /<key>.txt so IndexNow/Bing can verify site ownership."""
+    key = getattr(settings, 'INDEXNOW_KEY', '')
+    return HttpResponse(key, content_type='text/plain')
+
+
 urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': {
         'pages': StaticViewSitemap,
@@ -25,6 +32,8 @@ urlpatterns = [
         'Sitemap: ' + request.build_absolute_uri('/sitemap.xml') + '\n',
         content_type='text/plain',
     ), name='robots'),
+    # IndexNow key verification file — must be accessible at /<key>.txt
+    path(f'{settings.INDEXNOW_KEY}.txt', indexnow_key_view, name='indexnow_key'),
     # Serve favicon.ico so browsers don't get a 404
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon.svg'), permanent=True)),
     path('admin/', admin.site.urls),
