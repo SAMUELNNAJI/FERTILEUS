@@ -7,14 +7,26 @@ from django.core.paginator import Paginator
 
 
 def error_404(request, exception=None):
+    from django.conf import settings
+    if settings.DEBUG and not getattr(settings, 'FORCE_CUSTOM_ERROR_PAGES', False):
+        from django.views.defaults import page_not_found
+        return page_not_found(request, exception)
     return render(request, '404.html', status=404)
 
 
 def error_500(request):
+    from django.conf import settings
+    if settings.DEBUG and not getattr(settings, 'FORCE_CUSTOM_ERROR_PAGES', False):
+        from django.views.defaults import server_error
+        return server_error(request)
     return render(request, '500.html', status=500)
 
 
 def error_403(request, exception=None):
+    from django.conf import settings
+    if settings.DEBUG and not getattr(settings, 'FORCE_CUSTOM_ERROR_PAGES', False):
+        from django.views.defaults import permission_denied
+        return permission_denied(request, exception)
     return render(request, '403.html', status=403)
 
 
