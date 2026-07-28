@@ -1,8 +1,11 @@
-﻿{% extends "home/base.html" %}
-{% load static %}
-{% block title %}FertileUs - Your Fertile Health Matters to Us{% endblock %}
-{% block meta_description %}Trusted fertility education, personalised guidance, and community support for people across Africa.{% endblock %}
-{% block content %}
+﻿{% extends "home/base.html" %} {% load static %} {% load image_tags %} {% block
+extra_head %}<meta
+  name="msvalidate.01"
+  content="5B6F3094AAD05D5E9C2E95763B3D7EF"
+/>{% endblock %} {% block title %}FertileUs - Your Fertile Health Matters to
+Us{% endblock %} {% block meta_description %}Trusted fertility education,
+personalised guidance, and community support for people across Africa.{%
+endblock %} {% block content %}
 
 <!-- ===== HERO SECTION ===== -->
 <section class="hero">
@@ -42,12 +45,13 @@
       <div class="hero-image-wrap">
         <img
           src="{% static 'assests/image/hero-image.jpg' %}"
-          alt="Smiling woman"
+          alt="Smiling woman representing FertileUs community"
           class="hero-img"
           loading="eager"
           fetchpriority="high"
-          width="600"
-          height="700"
+          decoding="async"
+          width="480"
+          height="500"
         />
         <div class="hero-badge">
           <span class="badge-number">92%</span>
@@ -82,6 +86,10 @@
         src="{% static 'assests/image/about.jpg' %}"
         alt="Fertility consultation at clinic"
         class="about-img"
+        loading="lazy"
+        decoding="async"
+        width="550"
+        height="420"
       />
     </div>
     <div class="about-right">
@@ -201,6 +209,10 @@
           src="{% static 'assests/image/fertility education.jpg' %}"
           alt="Fertility education – lab technician at microscope"
           class="options-img"
+          loading="lazy"
+          decoding="async"
+          width="550"
+          height="420"
         />
         <div class="options-expert-badge">
           <p class="expert-label">Expert Care</p>
@@ -232,23 +244,24 @@
       <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
         <article class="journal-card">
           <div class="journal-img-wrap">
-            {% if post.blog_image %}
-            <img
-              src="{{ post.blog_image.url }}"
-              alt="{{ post.blog_title }}"
-              class="journal-img"
-            />
-            {% else %}
+            {% if post.blog_image %} {% responsive_img post.blog_image.url
+            post.blog_title "journal-img" width="400" height="200" %} {% else %}
             <img
               src="{% static 'assests/image/Fertility.jpg' %}"
               alt="{{ post.blog_title }}"
               class="journal-img"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="200"
             />
             {% endif %}
           </div>
           <div class="journal-body">
             <p class="journal-meta">
-              <span class="journal-cat">{{ post.blog_category }}</span> ·{{ post.blog_date|date:"j F Y" }} · {{ post.blog_read_time }} min read
+              <span class="journal-cat">{{ post.blog_category }}</span> ·{{
+              post.blog_date|date:"j F Y" }} · {{ post.blog_read_time }} min
+              read
             </p>
             <h3>{{ post.blog_title }}</h3>
             <p>{{ post.blog_content|truncatewords:20 }}</p>
@@ -269,8 +282,8 @@
     <div class="cta-decor-circle"></div>
     <h2>You don't have to figure this out alone</h2>
     <p>
-      Chat with Dr. Cee Fertility, our AI fertility guide, or reach a human on our
-      care team today.
+      Chat with Dr. Cee Fertility, our AI fertility guide, or reach a human on
+      our care team today.
     </p>
     <div class="cta-buttons">
       <a href="#aiBotPopup" class="btn btn-cta-primary" data-open-ai-bot

@@ -1,7 +1,7 @@
-{% extends "home/base.html" %} {% load static %} {% block title %}Journal -
-FertileUs Network{% endblock %} {% block meta_description %}Explore expert
-fertility insights, pregnancy information, and egg donation guidance from
-FertileUs.{% endblock %} {% block content %}
+{% extends "home/base.html" %} {% load static %} {% load image_tags %} {% block
+title %}Journal - FertileUs Network{% endblock %} {% block meta_description
+%}Explore expert fertility insights, pregnancy information, and egg donation
+guidance from FertileUs.{% endblock %} {% block content %}
 
 <!-- ===== BLOG HERO ===== -->
 <section class="blog-hero">
@@ -56,17 +56,16 @@ FertileUs.{% endblock %} {% block content %}
       <a href="{% url 'blog_post' post.blog_slug %}" class="journal-card-link">
         <article class="journal-card" data-category="{{ post.blog_category }}">
           <div class="journal-img-wrap">
-            {% if post.blog_image %}
-            <img
-              src="{{ post.blog_image.url }}"
-              alt="{{ post.blog_title }}"
-              class="journal-img"
-            />
-            {% else %}
+            {% if post.blog_image %} {% responsive_img post.blog_image.url
+            post.blog_title "journal-img" width="400" height="200" %} {% else %}
             <img
               src="{% static 'assests/image/Fertility.jpg' %}"
               alt="{{ post.blog_title }}"
               class="journal-img"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="200"
             />
             {% endif %}
           </div>
@@ -88,26 +87,31 @@ FertileUs.{% endblock %} {% block content %}
       </div>
       {% endfor %}
     </div>
-    
+
     <!-- Pagination -->
     {% if paginator.num_pages > 1 %}
     <div class="pagination">
       {% if posts.has_previous %}
-      <a href="?page={{ posts.previous_page_number }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}" class="pagination-link">
+      <a
+        href="?page={{ posts.previous_page_number }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}"
+        class="pagination-link"
+      >
         <i class="fa-solid fa-chevron-left"></i>
       </a>
-      {% endif %}
-      
-      {% for num in paginator.page_range %}
-      {% if posts.number == num %}
+      {% endif %} {% for num in paginator.page_range %} {% if posts.number ==
+      num %}
       <span class="pagination-link active">{{ num }}</span>
       {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-      <a href="?page={{ num }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}" class="pagination-link">{{ num }}</a>
-      {% endif %}
-      {% endfor %}
-      
-      {% if posts.has_next %}
-      <a href="?page={{ posts.next_page_number }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}" class="pagination-link">
+      <a
+        href="?page={{ num }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}"
+        class="pagination-link"
+        >{{ num }}</a
+      >
+      {% endif %} {% endfor %} {% if posts.has_next %}
+      <a
+        href="?page={{ posts.next_page_number }}{% if active_category != 'all' %}&category={{ active_category }}{% endif %}"
+        class="pagination-link"
+      >
         <i class="fa-solid fa-chevron-right"></i>
       </a>
       {% endif %}

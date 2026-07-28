@@ -1,49 +1,50 @@
-{% extends "home/base.html" %}
-{% load static %}
-{% block title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
-{% block meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block og_type %}article{% endblock %}
-{% block og_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
-{% block og_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %}
-{% block twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %}
-{% block extra_head %}
-{% if post.blog_image %}
+{% extends "home/base.html" %} {% load static %} {% load image_tags %} {% block
+title %}{{ post.blog_title }} - FertileUs Network{% endblock %} {% block
+meta_description %}{{ post.blog_content|striptags|truncatechars:155 }}{%
+endblock %} {% block og_type %}article{% endblock %} {% block og_title %}{{
+post.blog_title }} - FertileUs Network{% endblock %} {% block og_description
+%}{{ post.blog_content|striptags|truncatechars:155 }}{% endblock %} {% block
+twitter_title %}{{ post.blog_title }} - FertileUs Network{% endblock %} {% block
+twitter_description %}{{ post.blog_content|striptags|truncatechars:155 }}{%
+endblock %} {% block extra_head %} {% if post.blog_image %}
 <meta property="og:image" content="{{ post.blog_image.url }}" />
 <meta name="twitter:image" content="{{ post.blog_image.url }}" />
 {% endif %}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "{{ post.blog_title|escapejs }}",
-  "datePublished": "{{ post.blog_date|date:'c' }}",
-  "author": {"@type": "Person", "name": "{{ post.blog_author|escapejs }}"},
-  "publisher": {"@type": "Organization", "name": "FertileUs Network"},
-  "mainEntityOfPage": "{{ site_url }}{{ request.path }}"{% if post.blog_image %},
-  "image": "{{ post.blog_image.url }}"{% endif %}
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ post.blog_title|escapejs }}",
+    "datePublished": "{{ post.blog_date|date:'c' }}",
+    "author": {"@type": "Person", "name": "{{ post.blog_author|escapejs }}"},
+    "publisher": {"@type": "Organization", "name": "FertileUs Network"},
+    "mainEntityOfPage": "{{ site_url }}{{ request.path }}"{% if post.blog_image %},
+    "image": "{{ post.blog_image.url }}"{% endif %}
+  }
 </script>
-{% endblock %}
-
-{% block content %}
-{# Django Messages #}
-{% if messages %}
-  <div class="blog-messages-container" id="blogMessagesContainer">
-    {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" data-auto-dismiss="true">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <div class="alert-progress-bar">
-          <div class="alert-progress-fill"></div>
-        </div>
-      </div>
-    {% endfor %}
+{% endblock %} {% block content %} {# Django Messages #} {% if messages %}
+<div class="blog-messages-container" id="blogMessagesContainer">
+  {% for message in messages %}
+  <div
+    class="alert alert-{{ message.tags }} alert-dismissible fade show"
+    role="alert"
+    data-auto-dismiss="true"
+  >
+    {{ message }}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+    <div class="alert-progress-bar">
+      <div class="alert-progress-fill"></div>
+    </div>
   </div>
-{% endif %}
-
-{# Edit Comment Modal #}
-<div id="editCommentModal" class="edit-comment-modal" style="display: none;">
+  {% endfor %}
+</div>
+{% endif %} {# Edit Comment Modal #}
+<div id="editCommentModal" class="edit-comment-modal" style="display: none">
   <div class="edit-modal-content">
     <div class="edit-modal-header">
       <h3>Edit Comment</h3>
@@ -53,16 +54,18 @@
     </div>
     <form id="editCommentForm" method="POST">
       {% csrf_token %}
-      <input type="hidden" id="editCommentId" name="comment_id">
-      <textarea 
-        id="editCommentBody" 
-        name="body" 
-        class="disc-textarea" 
+      <input type="hidden" id="editCommentId" name="comment_id" />
+      <textarea
+        id="editCommentBody"
+        name="body"
+        class="disc-textarea"
         rows="5"
         required
       ></textarea>
       <div class="edit-modal-actions">
-        <button type="button" class="btn btn-outline-dark" id="cancelEdit">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" id="cancelEdit">
+          Cancel
+        </button>
         <button type="submit" class="btn btn-green">Save Changes</button>
       </div>
     </form>
@@ -71,7 +74,6 @@
 <!-- ===== BLOG POST HERO ===== -->
 <section class="blog-post-hero">
   <div class="blog-post-hero-inner">
-    
     <div class="blog-post-meta">
       <span class="blog-post-cat">{{ post.blog_category }}</span>
       <span class="blog-post-date">{{ post.blog_date|date:"j F Y" }}</span>
@@ -94,16 +96,15 @@
 <article class="blog-post-article">
   <div class="blog-post-inner">
     <div class="blog-post-featured-img">
-      {% if post.blog_image %}
-      <img
-        src="{{ post.blog_image.url }}"
-        alt="{{ post.blog_title }}"
-        onerror="this.src='{% static 'assests/image/Fertility.jpg' %}'"
-      />
-      {% else %}
+      {% if post.blog_image %} {% picture_tag post.blog_image.url
+      post.blog_title sizes="(max-width: 768px) 100vw, 740px" %} {% else %}
       <img
         src="{% static 'assests/image/Fertility.jpg' %}"
         alt="{{ post.blog_title }}"
+        loading="eager"
+        decoding="async"
+        width="740"
+        height="400"
       />
       {% endif %}
     </div>
@@ -135,7 +136,8 @@
         >
           {% if rp.blog_image %}
           <div class="blog-post-related-img">
-            <img src="{{ rp.blog_image.url }}" alt="{{ rp.blog_title }}" />
+            {% responsive_img rp.blog_image.url rp.blog_title width="350"
+            height="140" %}
           </div>
           {% endif %}
           <div class="blog-post-related-body">
@@ -172,8 +174,8 @@
       <!-- Comment form -->
       <div class="discussion-form-wrap">
         <form class="discussion-form" id="commentForm" method="POST" action="">
-          {% csrf_token %} {{ form.name }} {{ form.body }}
-          {% if form.body.errors %}
+          {% csrf_token %} {{ form.name }} {{ form.body }} {% if
+          form.body.errors %}
           <p class="disc-form-error">{{ form.body.errors|join:", " }}</p>
           {% endif %}
           <div class="disc-form-footer">
@@ -222,7 +224,7 @@
               <span>Helpful</span>
               <span class="like-count">({{ comment.likes }})</span>
             </button>
-           
+
             <button
               class="disc-action-btn"
               data-action="reply"
@@ -232,7 +234,8 @@
               <span>Reply</span>
             </button>
 
-            {% if request.user.is_authenticated and comment.user == request.user %}
+            {% if request.user.is_authenticated and comment.user == request.user
+            %}
             <button
               class="disc-action-btn"
               data-action="edit"
@@ -244,7 +247,11 @@
             </button>
 
             <!-- DELETE COMMENT LOGIC -->
-            <form action="{% url 'delete_comment' comment.id %}" method="POST" style="display:inline;">
+            <form
+              action="{% url 'delete_comment' comment.id %}"
+              method="POST"
+              style="display: inline"
+            >
               {% csrf_token %}
               <button
                 class="disc-action-btn"
@@ -256,37 +263,60 @@
               </button>
             </form>
             {% endif %}
-            
           </div>
-          
+
           <!-- Nested Replies -->
           {% if comment.replies.all %}
           <div class="disc-replies">
             {% for reply in comment.replies.all %}
-            <div class="disc-comment disc-comment-reply" data-id="{{ reply.id }}">
+            <div
+              class="disc-comment disc-comment-reply"
+              data-id="{{ reply.id }}"
+            >
               <div class="disc-comment-header">
                 <div class="disc-avatar">
                   {{ reply.name|slice:":1"|upper|default:"A" }}
                 </div>
                 <div class="disc-comment-meta">
-                  <span class="disc-commenter">{{ reply.name|default:"Anonymous" }}</span>
-                  <span class="disc-time">{{ reply.created|timesince }} ago</span>
+                  <span class="disc-commenter"
+                    >{{ reply.name|default:"Anonymous" }}</span
+                  >
+                  <span class="disc-time"
+                    >{{ reply.created|timesince }} ago</span
+                  >
                 </div>
               </div>
               <p class="disc-comment-body">{{ reply.body }}</p>
               <div class="disc-comment-actions">
-                <button class="disc-action-btn" data-action="helpful" data-id="{{ reply.id }}" data-likes="{{ reply.likes }}">
+                <button
+                  class="disc-action-btn"
+                  data-action="helpful"
+                  data-id="{{ reply.id }}"
+                  data-likes="{{ reply.likes }}"
+                >
                   <i class="fa-regular fa-heart"></i>
                   <span>Helpful</span>
                   <span class="like-count">({{ reply.likes }})</span>
                 </button>
-                <button class="disc-action-btn" data-action="edit" data-id="{{ reply.id }}" data-body="{{ reply.body }}">
+                <button
+                  class="disc-action-btn"
+                  data-action="edit"
+                  data-id="{{ reply.id }}"
+                  data-body="{{ reply.body }}"
+                >
                   <i class="fa-regular fa-pen-to-square"></i>
                   <span>Edit</span>
                 </button>
-                <form action="{% url 'delete_comment' reply.id %}" method="POST">
+                <form
+                  action="{% url 'delete_comment' reply.id %}"
+                  method="POST"
+                >
                   {% csrf_token %}
-                  <button class="disc-action-btn" data-action="delete" data-id="{{ reply.id }}">
+                  <button
+                    class="disc-action-btn"
+                    data-action="delete"
+                    data-id="{{ reply.id }}"
+                  >
                     <i class="fa-regular fa-trash-can"></i>
                     <span>Delete</span>
                   </button>
@@ -303,25 +333,24 @@
         </div>
         {% endif %}
       </div>
-      
+
       <!-- Comments Pagination -->
       {% if paginator.num_pages > 1 %}
       <div class="pagination">
         {% if comments.has_previous %}
-        <a href="?page={{ comments.previous_page_number }}" class="pagination-link">
+        <a
+          href="?page={{ comments.previous_page_number }}"
+          class="pagination-link"
+        >
           <i class="fa-solid fa-chevron-left"></i>
         </a>
-        {% endif %}
-        
-        {% for num in paginator.page_range %}
-        {% if comments.number == num %}
+        {% endif %} {% for num in paginator.page_range %} {% if comments.number
+        == num %}
         <span class="pagination-link active">{{ num }}</span>
-        {% elif num > comments.number|add:'-3' and num < comments.number|add:'3' %}
+        {% elif num > comments.number|add:'-3' and num < comments.number|add:'3'
+        %}
         <a href="?page={{ num }}" class="pagination-link">{{ num }}</a>
-        {% endif %}
-        {% endfor %}
-        
-        {% if comments.has_next %}
+        {% endif %} {% endfor %} {% if comments.has_next %}
         <a href="?page={{ comments.next_page_number }}" class="pagination-link">
           <i class="fa-solid fa-chevron-right"></i>
         </a>
@@ -335,15 +364,17 @@
 {% endblock %} {% block extra_js %}
 <script>
   /* ---- Auto-dismiss messages after 5 seconds ---- */
-  document.addEventListener('DOMContentLoaded', () => {
-    const messagesContainer = document.getElementById('blogMessagesContainer');
+  document.addEventListener("DOMContentLoaded", () => {
+    const messagesContainer = document.getElementById("blogMessagesContainer");
     if (messagesContainer) {
-      const alerts = messagesContainer.querySelectorAll('[data-auto-dismiss="true"]');
-      alerts.forEach(alert => {
+      const alerts = messagesContainer.querySelectorAll(
+        '[data-auto-dismiss="true"]',
+      );
+      alerts.forEach((alert) => {
         setTimeout(() => {
-          alert.style.opacity = '0';
-          alert.style.transform = 'translateX(20px)';
-          alert.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          alert.style.opacity = "0";
+          alert.style.transform = "translateX(20px)";
+          alert.style.transition = "opacity 0.3s ease, transform 0.3s ease";
           setTimeout(() => {
             alert.remove();
             if (messagesContainer.children.length === 0) {
@@ -393,28 +424,31 @@
         const icon = btn.querySelector("i");
         const liked = btn.classList.toggle("active");
         icon.className = liked ? "fa-solid fa-heart" : "fa-regular fa-heart";
-        
+
         // Call like endpoint
         fetch(`/comments/${id}/like/`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]')?.value || ''
-          }
+            "X-CSRFToken":
+              document.querySelector("[name=csrfmiddlewaretoken]")?.value || "",
+          },
         })
-        .then(response => response.json())
-        .then(data => {
-          const likeCount = btn.querySelector('.like-count');
-          if (likeCount) {
-            likeCount.textContent = `(${data.likes})`;
-          }
-        })
-        .catch(error => console.error('Error liking comment:', error));
+          .then((response) => response.json())
+          .then((data) => {
+            const likeCount = btn.querySelector(".like-count");
+            if (likeCount) {
+              likeCount.textContent = `(${data.likes})`;
+            }
+          })
+          .catch((error) => console.error("Error liking comment:", error));
       } else if (action === "reply") {
         const textarea = document.getElementById("comment-body");
-        const commenterName = btn.closest(".disc-comment").querySelector(".disc-commenter").textContent;
+        const commenterName = btn
+          .closest(".disc-comment")
+          .querySelector(".disc-commenter").textContent;
         textarea.focus();
         textarea.value = `@${commenterName} `;
-        
+
         // Add hidden parent_id field if it doesn't exist
         let parentInput = document.getElementById("parent_id");
         if (!parentInput) {
@@ -426,33 +460,38 @@
         }
         parentInput.value = id;
       } else if (action === "edit") {
-        const modal = document.getElementById('editCommentModal');
-        const modalContent = modal.querySelector('.edit-modal-content');
+        const modal = document.getElementById("editCommentModal");
+        const modalContent = modal.querySelector(".edit-modal-content");
         const commentBody = btn.dataset.body;
-        const commentElement = btn.closest('.disc-comment');
-        
-        document.getElementById('editCommentId').value = id;
-        document.getElementById('editCommentBody').value = commentBody;
-        document.getElementById('editCommentForm').action = `/comments/${id}/edit/`;
-        
+        const commentElement = btn.closest(".disc-comment");
+
+        document.getElementById("editCommentId").value = id;
+        document.getElementById("editCommentBody").value = commentBody;
+        document.getElementById("editCommentForm").action =
+          `/comments/${id}/edit/`;
+
         // Position modal above the comment, centered horizontally
         const commentRect = commentElement.getBoundingClientRect();
         const modalWidth = Math.min(500, commentRect.width);
         const modalHeight = modalContent.offsetHeight || 300;
-        
+
         // Calculate centered position
-        const leftPosition = commentRect.left + (commentRect.width - modalWidth) / 2;
+        const leftPosition =
+          commentRect.left + (commentRect.width - modalWidth) / 2;
         const topPosition = commentRect.top - modalHeight - 20;
-        
+
         // Ensure modal doesn't go off screen
         const safeTop = Math.max(20, topPosition);
-        const safeLeft = Math.max(20, Math.min(leftPosition, window.innerWidth - modalWidth - 20));
-        
+        const safeLeft = Math.max(
+          20,
+          Math.min(leftPosition, window.innerWidth - modalWidth - 20),
+        );
+
         modalContent.style.top = `${safeTop}px`;
         modalContent.style.left = `${safeLeft}px`;
         modalContent.style.width = `${modalWidth}px`;
-        
-        modal.style.display = 'block';
+
+        modal.style.display = "block";
       } else if (action === "delete") {
         if (confirm("Delete this comment?")) {
           alert("Delete functionality - to be implemented");
@@ -462,22 +501,22 @@
   });
 
   /* ---- Modal close functionality ---- */
-  const editModal = document.getElementById('editCommentModal');
-  const closeEditModal = document.getElementById('closeEditModal');
-  const cancelEdit = document.getElementById('cancelEdit');
+  const editModal = document.getElementById("editCommentModal");
+  const closeEditModal = document.getElementById("closeEditModal");
+  const cancelEdit = document.getElementById("cancelEdit");
 
-  closeEditModal.addEventListener('click', () => {
-    editModal.style.display = 'none';
+  closeEditModal.addEventListener("click", () => {
+    editModal.style.display = "none";
   });
 
-  cancelEdit.addEventListener('click', () => {
-    editModal.style.display = 'none';
+  cancelEdit.addEventListener("click", () => {
+    editModal.style.display = "none";
   });
 
   // Close modal when clicking outside
-  window.addEventListener('click', (e) => {
+  window.addEventListener("click", (e) => {
     if (e.target === editModal) {
-      editModal.style.display = 'none';
+      editModal.style.display = "none";
     }
   });
 </script>
