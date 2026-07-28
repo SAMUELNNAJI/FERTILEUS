@@ -12,6 +12,9 @@ services:
 
       - key: DEBUG
         value: "False"
+      
+      - key: FORCE_CUSTOM_ERROR_PAGES
+        value: "True"
 
       - key: ALLOWED_HOSTS
         value: ".onrender.com"

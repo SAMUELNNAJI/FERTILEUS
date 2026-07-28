@@ -20,6 +20,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv(
 SITE_URL      = config('SITE_URL', default='https://fertileus.com.ng').rstrip('/')
 INDEXNOW_KEY  = config('INDEXNOW_KEY', default='')
 
+# ── Force custom error pages even in DEBUG mode ───────────────────────────────
+FORCE_CUSTOM_ERROR_PAGES = config('FORCE_CUSTOM_ERROR_PAGES', default=False, cast=bool)
+
 # ── Google Indexing API ───────────────────────────────────────────────────────────
 GOOGLE_SERVICE_ACCOUNT_JSON = config('GOOGLE_SERVICE_ACCOUNT_JSON', default='')
 
