@@ -28,9 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'django.contrib.sites',
     'Home',
     'aibot',
 ]
+
+SITE_ID = 1
 
 # ── Middleware ─────────────────────────────────────────────────────────────────
 MIDDLEWARE = [
