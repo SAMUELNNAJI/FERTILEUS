@@ -1,0 +1,54 @@
+/*
+  Critical CSS — inlined in <head> for above-the-fold rendering.
+  Contains only what is needed to paint the navbar and hero section
+  without waiting for the full stylesheet to load.
+*/
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-dark:#1b3f2e;--green-mid:#356a4b;--green-light:#52b788;
+  --green-pale:#d8f3dc;--green-bg:#f4faf6;--text-dark:#111c17;
+  --text-body:#3d4f45;--text-muted:#7a9387;--white:#ffffff;
+  --gray-bg:#f8f9fa;--border:#e2ece6;--radius:12px;--radius-lg:40px;
+  --shadow:0 4px 24px rgba(27,63,46,.1);--shadow-card:0 2px 16px rgba(27,63,46,.08);
+  --font-serif:"Playfair Display",Georgia,serif;
+  --font-sans:"Inter",system-ui,sans-serif;--nav-h:70px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--text-body);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:100;background:var(--white);border-bottom:1px solid var(--border);height:var(--nav-h);box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;gap:40px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--green-dark);flex-shrink:0;text-decoration:none}
+.logo-icon{width:34px;height:34px;background:var(--green-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:18px;height:18px;fill:var(--white)}
+.logo-leaf{display:none}
+.nav-links{display:flex;gap:2px;margin:0 auto}
+.nav-links li a{position:relative;padding:7px 12px;font-family:var(--font-sans);font-size:.72rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-body);transition:color .2s ease}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
+.hamburger span{display:block;width:24px;height:2px;background:var(--green-dark);border-radius:2px;transition:all .3s}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:50px;font-family:var(--font-sans);font-size:.88rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .25s ease;white-space:nowrap}
+.btn-green{background:var(--green-mid);color:var(--white);border-color:var(--green-mid);border-radius:50px;padding:10px 24px;font-size:.88rem;font-weight:600;box-shadow:0 4px 12px rgba(45,92,63,.3);letter-spacing:.01em;transition:all .2s ease}
+
+/* Hero */
+.hero{background:radial-gradient(ellipse 130% 90% at 50% 0%,#ddeee3 0%,#eaf4ee 40%,#f4f9f5 70%,#fff 100%);padding:120px 24px 60px;overflow:hidden}
+.hero-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-tagline{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green-mid);margin-bottom:16px}
+.hero-heading{font-family:var(--font-serif);font-size:clamp(2.4rem,4.5vw,3.4rem);font-weight:700;line-height:1.15;color:var(--text-dark);margin-bottom:20px}
+.hero-heading em{font-style:italic;color:var(--green-mid)}
+.hero-subtext{font-size:.97rem;color:var(--text-body);max-width:480px;margin-bottom:32px;line-height:1.75}
+.hero-image-wrap{position:relative;display:flex;justify-content:center}
+.hero-img{width:100%;max-width:480px;border-radius:var(--radius-lg);object-fit:cover;height:500px;box-shadow:var(--shadow)}
+
+/* Blog hero */
+.blog-hero{background:radial-gradient(ellipse 130% 90% at 50% 0%,#ddeee3 0%,#eaf4ee 40%,#f4f9f5 70%,#fff 100%);padding:140px 24px 56px;text-align:center}
+.blog-post-hero{background:radial-gradient(ellipse 130% 90% at 50% 0%,#ddeee3 0%,#eaf4ee 40%,#f4f9f5 70%,#fff 100%);padding:130px 24px 48px;text-align:center}
+.blog-post-hero-inner{max-width:720px;margin:0 auto}
+
+/* Prevent layout shift before full CSS loads */
+.mob-nav{display:none!important;visibility:hidden}
+.mob-nav.open{display:flex!important;visibility:visible}
