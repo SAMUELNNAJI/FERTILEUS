@@ -122,5 +122,12 @@ def like_comment(request, comment_id):
     return JsonResponse({'likes': comment.likes})
 
 
+from django.conf import settings
+from django.http import HttpResponse
+
+
+def debug_check(request):
+    return HttpResponse(f"DEBUG = {settings.DEBUG}")
+
 def contact(request):
     return render(request, 'home/contact.html')
