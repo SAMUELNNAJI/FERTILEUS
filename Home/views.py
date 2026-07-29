@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
+from django.conf import settings
 from .models import Blog, Comment
 from .forms import CommentForm
 from django.contrib import messages
