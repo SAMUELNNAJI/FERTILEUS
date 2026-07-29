@@ -15,6 +15,9 @@ services:
       
       - key: FORCE_CUSTOM_ERROR_PAGES
         value: "True"
+      
+      - key: MAINTENANCE_MODE
+        value: "False"
 
       - key: ALLOWED_HOSTS
         value: ".onrender.com"

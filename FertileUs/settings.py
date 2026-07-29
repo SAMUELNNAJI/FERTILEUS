@@ -23,6 +23,9 @@ INDEXNOW_KEY  = config('INDEXNOW_KEY', default='')
 # ── Force custom error pages even in DEBUG mode ───────────────────────────────
 FORCE_CUSTOM_ERROR_PAGES = config('FORCE_CUSTOM_ERROR_PAGES', default=False, cast=bool)
 
+# ── Maintenance Mode ───────────────────────────────────────────────────────────
+MAINTENANCE_MODE = config('MAINTENANCE_MODE', default=False, cast=bool)
+
 # ── Google Indexing API ───────────────────────────────────────────────────────────
 GOOGLE_SERVICE_ACCOUNT_JSON = config('GOOGLE_SERVICE_ACCOUNT_JSON', default='')
 
@@ -46,6 +49,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'Home.middleware.MaintenanceModeMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
