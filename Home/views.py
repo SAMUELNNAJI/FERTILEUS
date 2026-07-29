@@ -6,6 +6,17 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 
+def error_404(request, exception=None):
+    return render(request, '404.html', status=404)
+
+
+def error_500(request):
+    return render(request, '500.html', status=500)
+
+
+def error_403(request, exception=None):
+    return render(request, '403.html', status=403)
+
 
 def home(request):
     posts = Blog.objects.filter(published=True)[:3]
@@ -120,10 +131,6 @@ def like_comment(request, comment_id):
     comment.likes += 1
     comment.save()
     return JsonResponse({'likes': comment.likes})
-
-
-from django.conf import settings
-from django.http import HttpResponse
 
 
 def debug_check(request):
