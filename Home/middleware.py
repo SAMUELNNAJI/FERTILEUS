@@ -24,7 +24,7 @@ class MaintenanceModeMiddleware:
                 return self.get_response(request)
             
             # Allow access if user is superuser (optional - for testing)
-            if request.user.is_authenticated and request.user.is_superuser:
+            if hasattr(request, 'user') and request.user.is_authenticated and request.user.is_superuser:
                 return self.get_response(request)
             
             # Show maintenance page for all other requests
