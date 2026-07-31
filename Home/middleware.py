@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.http import HttpResponse
 from django.template import loader
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class MaintenanceModeMiddleware:
@@ -14,7 +17,10 @@ class MaintenanceModeMiddleware:
 
     def __call__(self, request):
         # Check if maintenance mode is enabled
-        if getattr(settings, 'MAINTENANCE_MODE', False):
+        maintenance_mode = getattr(settings, 'MAINTENANCE_MODE', False)
+        logger.info(f"MAINTENANCE_MODE setting: {maintenance_mode}")
+        
+        if maintenance_mode:
             # Allow access to admin panel and static files
             if request.path.startswith('/admin/') or request.path.startswith('/static/'):
                 return self.get_response(request)
@@ -28,6 +34,7 @@ class MaintenanceModeMiddleware:
                 return self.get_response(request)
             
             # Show maintenance page for all other requests
+            logger.info(f"Showing maintenance page for: {request.path}")
             template = loader.get_template('maintenance.html')
             return HttpResponse(template.render(), status=503)
         

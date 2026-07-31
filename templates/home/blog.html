@@ -127,23 +127,18 @@ FertileUs.{% endblock %} {% block content %}
 {% endblock %} {% block extra_js %}
 <script>
   const filterBtns = document.querySelectorAll(".blog-filter-btn");
-  const cards = document.querySelectorAll("#blogGrid .journal-card");
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
       const filter = btn.dataset.filter;
-      cards.forEach((card) => {
-        if (filter === "all" || card.dataset.category === filter) {
-          card.classList.remove("hidden-card");
-          card.style.animation = "none";
-          card.offsetHeight;
-          card.style.animation = "fadeUp 0.4s ease both";
-        } else {
-          card.classList.add("hidden-card");
-        }
-      });
+      // Update URL with category parameter for server-side filtering
+      const url = new URL(window.location);
+      if (filter === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', filter);
+      }
+      window.location.href = url.toString();
     });
   });
 </script>
