@@ -116,7 +116,7 @@ STORAGES = {
         'BACKEND': 'Home.storage.ImageKitStorage',
     },
     'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
     },
 }
 

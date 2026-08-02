@@ -11,7 +11,18 @@ def error_404(request, exception=None):
 
 
 def error_500(request):
-    return render(request, '500.html', status=500)
+    # Render a minimal safe template that does NOT extend base.html
+    # base.html calls {% static %} which can crash if the manifest is broken,
+    # turning a 500 into an infinite crash loop with no visible error page.
+    try:
+        return render(request, '500.html', status=500)
+    except Exception:
+        from django.http import HttpResponse
+        return HttpResponse(
+            '<h1>500 – Server Error</h1><p>Something went wrong. Please try again later.</p>',
+            status=500,
+            content_type='text/html',
+        )
 
 
 def error_403(request, exception=None):
