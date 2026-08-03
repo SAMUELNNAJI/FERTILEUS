@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Access denied – FertileUs Network</title>
     <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
       *,
       *::before,
@@ -13,83 +19,131 @@
         margin: 0;
         padding: 0;
       }
+
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #f8f9f7;
-        min-height: 100vh;
+        font-family: "Inter", sans-serif;
+        background: #e9f1ea;
+        height: 100vh;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
-        color: #2c3e50;
+        padding: 24px;
       }
-      .container {
-        max-width: 520px;
+
+      .card {
+        max-width: 500px;
+        width: 100%;
         text-align: center;
-        background: #fff;
-        padding: 56px 40px;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        padding: 0 40px;
       }
-      .icon {
-        font-size: 64px;
-        margin-bottom: 24px;
+
+      .sprout {
+        display: inline-block;
+        margin-bottom: 36px;
       }
-      h1 {
-        font-size: 72px;
+
+      .code {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(100px, 24vw, 136px);
         font-weight: 700;
-        color: #4a7c59;
+        color: #1e4d2b;
         line-height: 1;
         margin-bottom: 8px;
+        letter-spacing: -3px;
       }
-      h2 {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 16px;
+
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(22px, 5vw, 30px);
+        font-weight: 700;
+        color: #0f1a10;
+        margin-bottom: 24px;
       }
+
       p {
-        color: #5a6c7d;
-        line-height: 1.6;
-        margin-bottom: 32px;
+        font-size: 17px;
+        color: #4e6352;
+        line-height: 1.7;
+        max-width: 340px;
+        margin: 0 auto 52px;
       }
+
       .actions {
         display: flex;
-        gap: 12px;
+        gap: 16px;
         justify-content: center;
         flex-wrap: wrap;
       }
-      a {
-        display: inline-block;
-        padding: 12px 28px;
-        border-radius: 8px;
-        text-decoration: none;
+
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 168px;
+        padding: 19px 34px;
+        border-radius: 50px;
+        font-size: 16px;
         font-weight: 600;
-        font-size: 15px;
-        transition: opacity 0.2s;
+        text-decoration: none;
+        transition:
+          transform 0.15s,
+          opacity 0.15s,
+          box-shadow 0.15s;
       }
-      a:hover {
-        opacity: 0.85;
+
+      a.btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
       }
-      .btn-primary {
-        background: #4a7c59;
+
+      a.btn-primary {
+        background: #2d6a40;
         color: #fff;
+        box-shadow: 0 8px 24px rgba(45, 106, 64, 0.38);
       }
-      .btn-outline {
-        border: 2px solid #4a7c59;
-        color: #4a7c59;
+
+      a.btn-outline {
+        background: transparent;
+        color: #1e4d2b;
+        border: 2.5px solid #2d6a40;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="icon">🔒</div>
-      <h1>403</h1>
-      <h2>Access denied</h2>
-      <p>You do not have permission to access this page.</p>
+    <div class="card">
+      <div class="sprout" aria-hidden="true">
+        <svg
+          width="60"
+          height="68"
+          viewBox="0 0 60 68"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M30 68 C30 68 30 42 30 28"
+            stroke="#2d6a40"
+            stroke-width="3.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M30 36 C26 30 14 26 10 14 C20 13 30 22 30 36Z"
+            fill="#2d6a40"
+          />
+          <path
+            d="M30 26 C34 18 46 14 50 2 C40 3 30 14 30 26Z"
+            fill="#3d7a50"
+          />
+        </svg>
+      </div>
+
+      <div class="code">403</div>
+      <h1>Access denied</h1>
+      <p>You do not have permission to view this page.</p>
+
       <div class="actions">
-        <a href="/" class="btn-primary">Go back home</a>
-        <a href="/contact/" class="btn-outline">Contact us</a>
+        <a href="/" class="btn btn-primary">Go back home</a>
+        <a href="/contact/" class="btn btn-outline">Contact us</a>
       </div>
     </div>
   </body>
